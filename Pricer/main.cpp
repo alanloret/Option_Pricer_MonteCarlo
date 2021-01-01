@@ -2,7 +2,7 @@
 #include "vanilla.h"
 #include "digital.h"
 
-int main(int argc, char **argv) {
+int main() {
     // First we create the parameter list
     int num_sims = 1e7;   // Number of simulated asset paths
     double S = 100.0;  // Option price
