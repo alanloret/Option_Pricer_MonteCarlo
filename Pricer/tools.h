@@ -27,15 +27,4 @@ double gaussian_box_muller() {
     return x*sqrt(-2*log(euclid_sq)/euclid_sq);
 }
 
-// This is the Heaviside step function, named after English
-// mathematician Oliver Heaviside. It returns unity when val
-// is greater than or equal to zero and returns zero otherwise
-double heaviside(const double& val) {
-    if (val >= 0) {
-        return 1.0;
-    } else {
-        return 0.0;
-    }
-}
-
 #endif //PRICER_MONTECARLO_TOOLS_H
