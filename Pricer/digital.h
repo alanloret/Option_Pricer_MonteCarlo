@@ -9,17 +9,6 @@
 #include <iostream>
 #include"tools.h"
 
-// This is the Heaviside step function, named after English
-// mathematician Oliver Heaviside. It returns unity when val
-// is greater than or equal to zero and returns zero otherwise
-double heaviside(const double& val) {
-    if (val >= 0) {
-        return 1.0;
-    } else {
-        return 0.0;
-    }
-}
-
 // Pricing a digital call option with a Monte Carlo method
 double monte_carlo_digital_call_price(const int& num_sims, const double& S, const double& K, const double& r, const double& v, const double& T) {
     double S_adjust = S * exp(T*(r-0.5*v*v));
