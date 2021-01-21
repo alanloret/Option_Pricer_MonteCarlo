@@ -40,10 +40,10 @@ double BlackScholesModel::getVolatility() const
 
 void BlackScholesModel::print() const
 {
-    std::cout << "-- Black Scholes Model --" << std::endl;
-    std::cout << " Starting price : " << S << std::endl;
-    std::cout << " Risk Free Rate : " << r << std::endl;
-    std::cout << " Volatility : " << v << std::endl;
+    std::cout << "--- Black Scholes Model ---" << std::endl;
+    std::cout << " Starting price:  " << S << std::endl;
+    std::cout << " Risk-Free Rate:  " << r << std::endl;
+    std::cout << " Volatility:      " << v << std::endl;
 }
 
 double BlackScholesModel::gaussian_box_muller() const

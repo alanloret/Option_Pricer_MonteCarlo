@@ -1,3 +1,4 @@
+
 #pragma once
 class BlackScholesModel
 {
@@ -19,4 +20,3 @@ private:
 	double r;
 	double v;
 };
-

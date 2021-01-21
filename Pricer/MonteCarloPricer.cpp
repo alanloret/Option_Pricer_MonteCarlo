@@ -1,10 +1,8 @@
 #include "MonteCarloPricer.h"
-#include <iostream>
-
 
 MonteCarloPricer::MonteCarloPricer()
 {
-	MonteCarloPricer(1000);
+	MonteCarloPricer(1e6);
 }
 
 MonteCarloPricer::MonteCarloPricer(int const& num_sims)
@@ -14,12 +12,11 @@ MonteCarloPricer::MonteCarloPricer(int const& num_sims)
 
 void MonteCarloPricer::setNumSims(int const& num_sims)
 {
-	this->num_sims = 1000;
+	this->num_sims = 1e6;
 }
 
 int MonteCarloPricer::getNumSims()
 {
 	return num_sims;
 }
-
 

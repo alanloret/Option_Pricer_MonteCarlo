@@ -22,7 +22,7 @@ double DigitalCall::payoff(double const& S) const
 
 void DigitalCall::print() const
 {
-	std::cout << "-- Digital Call --" << std::endl;
+	std::cout << "--- Digital Call ---" << std::endl;
 	PathIndependentOption::print();
 }
 
@@ -51,7 +51,7 @@ double DigitalPut::payoff(double const& S) const
 
 void DigitalPut::print() const
 {
-	std::cout << "-- Digital Put --" << std::endl;
+	std::cout << "--- Digital Put ---" << std::endl;
 	PathIndependentOption::print();
 }
 

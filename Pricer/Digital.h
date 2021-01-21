@@ -22,4 +22,3 @@ public:
 	void print() const;
 	~DigitalPut();
 };
-
