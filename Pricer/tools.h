@@ -5,10 +5,15 @@
 #ifndef PRICER_MONTECARLO_TOOLS_H
 #define PRICER_MONTECARLO_TOOLS_H
 
+// A simple implementation of the Box-Muller algorithm, used to generate
+// gaussian random numbers - necessary for the Monte Carlo method below
+// Note that C++11 actually provides std::normal_distribution<> in
+// the <random> library, which can be used instead of this function
+
 double gaussian_box_muller() {
-    double x;
-    double y;
-    double euclid_sq;
+    double x = 0.0;
+    double y = 0.0;
+    double euclid_sq = 0.0;
 
     // Continue generating two uniform random variables
     // until the square of their "euclidean distance"
@@ -20,14 +25,6 @@ double gaussian_box_muller() {
     } while (euclid_sq >= 1.0);
 
     return x*sqrt(-2*log(euclid_sq)/euclid_sq);
-}
-
-double heaviside(const double& val) {
-    if (val >= 0) {
-        return 1.0;
-    } else {
-        return 0.0;
-    }
 }
 
 #endif //PRICER_MONTECARLO_TOOLS_H
