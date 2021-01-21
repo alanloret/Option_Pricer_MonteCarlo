@@ -1,5 +1,5 @@
-
 #pragma once
+#include <vector>
 class BlackScholesModel
 {
 public:
@@ -7,6 +7,7 @@ public:
 	BlackScholesModel(double const& S, double const& r, double const& v);
 
 	double generatePrice(double const& T) const;
+	void generatePath(double const& T, std::vector<double>& prices) const;
 
 	double getStartingPrice() const;
 	double getRiskFreeRate() const;
@@ -20,3 +21,4 @@ private:
 	double r;
 	double v;
 };
+

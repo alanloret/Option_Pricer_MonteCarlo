@@ -1,5 +1,6 @@
 #include "European.h"
 #include <iostream>
+#include <cmath>
 
 EuropeanCall::EuropeanCall()
 {
@@ -22,7 +23,7 @@ double EuropeanCall::payoff(double const& S) const
 
 void EuropeanCall::print() const
 {
-	std::cout << "--- European Call ---" << std::endl;
+	std::cout << "-- European Call --" << std::endl;
 	PathIndependentOption::print();
 }
 
@@ -51,7 +52,7 @@ double EuropeanPut::payoff(double const& S) const
 
 void EuropeanPut::print() const
 {
-	std::cout << "--- European Put ---" << std::endl;
+	std::cout << "-- European Put --" << std::endl;
 	PathIndependentOption::print();
 }
 

@@ -13,17 +13,23 @@ AsianCall::AsianCall(double const& K, double const& T)
     this->setMaturity(T);
 }
 
-double AsianCall::payoff(double const& S) const
+double AsianCall::payoff(std::vector<double> const& prices_vector) const
 {
-    if ((S - this->getStrike()) > 0)
-        return 1.0;
+    double mean = 0;
+    for (int i = 0; i < static_cast<int>(prices_vector.size()); i++) {
+        mean += prices_vector[i];
+    }
+    mean /= static_cast<double>(prices_vector.size());
+
+    if ((mean-this->getStrike()) > 0)
+        return mean-this->getStrike();
     return 0.0;
 }
 
 void AsianCall::print() const
 {
-    std::cout << "--- Asian Call ---" << std::endl;
-    PathIndependentOption::print();
+    std::cout << "--- Asian Arithmetic Call ---" << std::endl;
+    PathDependentOption::print();
 }
 
 AsianCall::~AsianCall()
@@ -32,30 +38,35 @@ AsianCall::~AsianCall()
 
 AsianPut::AsianPut()
 {
-    this->setStrike(100);
-    this->setMaturity(1);
+	this->setStrike(100);
+	this->setMaturity(1);
 }
 
 AsianPut::AsianPut(double const& K, double const& T)
 {
-    this->setStrike(K);
-    this->setMaturity(T);
+	this->setStrike(K);
+	this->setMaturity(T);
 }
 
-double AsianPut::payoff(double const& S) const
+double AsianPut::payoff(std::vector<double> const& prices_vector) const
 {
-    if ((S - this->getStrike()) < 0)
-        return 1.0;
+	double mean = 0;
+	for (int i = 0; i < static_cast<int>(prices_vector.size()); i++) {
+		mean += prices_vector[i];
+	}
+	mean /= static_cast<double>(prices_vector.size());
+
+    if ((this->getStrike()-mean) > 0)
+        return this->getStrike()-mean;
     return 0.0;
 }
 
 void AsianPut::print() const
 {
-    std::cout << "--- Asian Put ---" << std::endl;
-    PathIndependentOption::print();
+	std::cout << "--- Asian Arithmetic Put ---" << std::endl;
+	PathDependentOption::print();
 }
 
 AsianPut::~AsianPut()
 {
 }
-

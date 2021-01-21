@@ -1,25 +1,34 @@
 #pragma once
-#include "PathIndependentOption.h"
+#include "PathDependentOption.h"
+#include <vector>
 
-class AsianCall : public PathIndependentOption
+class AsianCall : public PathDependentOption
 {
 public:
     AsianCall();
     AsianCall(double const& K, double const& T);
 
-    double payoff(double const& S) const;
+    double payoff(std::vector<double> const& prices_vector) const;
     void print() const;
     ~AsianCall();
+
+private:
+    std::vector<double> prices_vector;
+
 };
 
-class AsianPut : public PathIndependentOption
+
+class AsianPut : public PathDependentOption
 {
 public:
-    AsianPut();
-    AsianPut(double const& K, double const& T);
+	AsianPut();
+	AsianPut(double const& K, double const& T);
 
-    double payoff(double const& S) const;
-    void print() const;
-    ~AsianPut();
+	double payoff(std::vector<double> const& prices_vector) const;
+	void print() const;
+	~AsianPut();
+
+private:
+	std::vector<double> prices_vector;
+	
 };
-
