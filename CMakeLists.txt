@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.17)
-project(Pricer_MonteCarlo)
+project(BlackScholes)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Pricer_MonteCarlo Pricer/main.cpp Pricer/vanilla.h Pricer/digital.h Pricer/tools.h)
+add_executable(BlackScholes BlackScholes/main.cpp BlackScholes/BlackScholesModel.cpp BlackScholes/BlackScholesModel.h
+        BlackScholes/European.cpp BlackScholes/European.h BlackScholes/MonteCarloPricer.cpp BlackScholes/MonteCarloPricer.h
+        BlackScholes/PathIndependentOption.cpp BlackScholes/PathIndependentOption.h BlackScholes/Digital.cpp
+        BlackScholes/Digital.h)
