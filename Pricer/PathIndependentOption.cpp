@@ -38,12 +38,11 @@ double PathIndependentOption::payoff(double const& S) const
 	return 0.0;
 }
 
-PathIndependentOption::~PathIndependentOption()
-{
-}
-
 void PathIndependentOption::print() const
 {
 	std::cout << " Strike:          " << K << std::endl;
 	std::cout << " Maturity:        " << T << std::endl;
 }
+
+PathIndependentOption::~PathIndependentOption()
+= default;

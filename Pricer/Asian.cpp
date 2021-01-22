@@ -5,7 +5,7 @@
 AsianArithmeticCall::AsianArithmeticCall()
 {
     this->setStrike(100);
-    this->setMaturity(1);
+    this->setMaturity(1.0);
 }
 
 AsianArithmeticCall::AsianArithmeticCall(double const& K, double const& T)
@@ -39,7 +39,7 @@ AsianArithmeticCall::~AsianArithmeticCall()
 AsianArithmeticPut::AsianArithmeticPut()
 {
     this->setStrike(100);
-    this->setMaturity(1);
+    this->setMaturity(1.0);
 }
 
 AsianArithmeticPut::AsianArithmeticPut(double const& K, double const& T)
@@ -73,7 +73,7 @@ AsianArithmeticPut::~AsianArithmeticPut()
 AsianGeometricCall::AsianGeometricCall()
 {
     this->setStrike(100);
-    this->setMaturity(1);
+    this->setMaturity(1.0);
 }
 
 AsianGeometricCall::AsianGeometricCall(double const& K, double const& T)
@@ -107,7 +107,7 @@ AsianGeometricCall::~AsianGeometricCall()
 AsianGeometricPut::AsianGeometricPut()
 {
     this->setStrike(100);
-    this->setMaturity(1);
+    this->setMaturity(1.0);
 }
 
 AsianGeometricPut::AsianGeometricPut(double const& K, double const& T)

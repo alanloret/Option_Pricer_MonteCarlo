@@ -4,7 +4,7 @@
 DigitalCall::DigitalCall()
 {
 	this->setStrike(100);
-	this->setMaturity(1);
+	this->setMaturity(1.0);
 }
 
 DigitalCall::DigitalCall(double const& K, double const& T)
@@ -32,7 +32,7 @@ DigitalCall::~DigitalCall()
 DigitalPut::DigitalPut()
 {
 	this->setStrike(100);
-	this->setMaturity(1);
+	this->setMaturity(1.0);
 }
 
 DigitalPut::DigitalPut(double const& K, double const& T)
@@ -61,7 +61,7 @@ DoubleDigital::DoubleDigital()
 {
     this->K1 = 90;
     this->K2 = 100;
-    this->setMaturity(1);
+    this->setMaturity(1.0);
 }
 DoubleDigital::DoubleDigital(double const& K1, double const& K2, double const& T)
 {
@@ -83,7 +83,7 @@ void DoubleDigital::print() const
 
     std::cout << " Low Strike:      " << K1 << std::endl;
     std::cout << " High Strike:     " << K2 << std::endl;
-    std::cout << " Maturity :       " << this->getMaturity() << std::endl;
+    std::cout << " Maturity:        " << this->getMaturity() << std::endl;
 }
 
 DoubleDigital::~DoubleDigital()

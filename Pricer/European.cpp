@@ -161,7 +161,7 @@ Butterfly::Butterfly()
 {
     this->K1 = 90;
     this->K2 = 110;
-    this->setMaturity(1);
+    this->setMaturity(1.0);
 }
 Butterfly::Butterfly(double const& K1, double const& K2, double const& T)
 {

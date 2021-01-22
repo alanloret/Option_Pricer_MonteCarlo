@@ -61,9 +61,8 @@ double PathDependentOption::payoff(std::vector<double> const& prices_vector) con
 void PathDependentOption::print() const
 {
     std::cout << " Strike:          " << K << std::endl;
-    std::cout << " Maturity:        " << T << " (in years)" << std::endl;
+    std::cout << " Maturity:        " << T << std::endl;
 }
-
 
 PathDependentOption::~PathDependentOption()
 = default;
