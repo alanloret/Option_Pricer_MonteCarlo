@@ -2,12 +2,6 @@
 #include <iostream>
 #include <cmath>
 
-BlackScholesModel::BlackScholesModel()
-{
-    this->S = 100;
-    this->r = 0.05;
-    this->v = 0.2;
-}
 
 BlackScholesModel::BlackScholesModel(double const& S, double const& r, double const& v)
 {

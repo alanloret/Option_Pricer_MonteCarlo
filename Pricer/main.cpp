@@ -25,6 +25,9 @@ int main()
     BullSpread bull_spread = BullSpread(80.0, 120.0, 1); // BullSpread
     optimizer.priceAndPrintClassic(model, bull_spread);
 
+    Strangle strangle = Strangle(80.0, 120.0, 1); // Strangle
+    optimizer.priceAndPrintClassic(model, strangle);
+
     BearSpread bear_spread = BearSpread(80.0, 120.0, 1); // BearSpread
     optimizer.priceAndPrintClassic(model, bear_spread);
 

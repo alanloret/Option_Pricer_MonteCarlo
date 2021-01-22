@@ -4,7 +4,6 @@
 class BlackScholesModel
 {
 public:
-	BlackScholesModel();
 	BlackScholesModel(double const& S, double const& r, double const& v);
 
 	double generatePrice(double const& T) const;

@@ -1,11 +1,6 @@
 #include "European.h"
 #include <iostream>
 
-EuropeanCall::EuropeanCall()
-{
-	this->setStrike(100);
-	this->setMaturity(1.0);
-}
 
 EuropeanCall::EuropeanCall(double const& K, double const& T)
 {
@@ -29,11 +24,6 @@ void EuropeanCall::print() const
 EuropeanCall::~EuropeanCall()
 = default;
 
-EuropeanPut::EuropeanPut()
-{
-	this->setStrike(100);
-	this->setMaturity(1.0);
-}
 
 EuropeanPut::EuropeanPut(double const& K, double const& T)
 {
@@ -57,12 +47,6 @@ void EuropeanPut::print() const
 EuropeanPut::~EuropeanPut()
 = default;
 
-BullSpread::BullSpread()
-{
-    this->K1 = 90;
-    this->K2 = 110;
-    this->setMaturity(1.0);
-}
 
 BullSpread::BullSpread(double const& K1, double const& K2, double const& T)
 {
@@ -91,12 +75,7 @@ void BullSpread::print() const
 BullSpread::~BullSpread()
 = default;
 
-BearSpread::BearSpread()
-{
-    this->K1 = 90;
-    this->K2 = 110;
-    this->setMaturity(1.0);
-}
+
 BearSpread::BearSpread(double const& K1, double const& K2, double const& T)
 {
     this->K1 = K1;
@@ -124,12 +103,7 @@ void BearSpread::print() const
 BearSpread::~BearSpread()
 = default;
 
-Strangle::Strangle()
-{
-    this->K1 = 90;
-    this->K2 = 110;
-    this->setMaturity(1.0);
-}
+
 Strangle::Strangle(double const& K1, double const& K2, double const& T)
 {
     this->K1 = K1;
@@ -157,12 +131,7 @@ void Strangle::print() const
 Strangle::~Strangle()
 = default;
 
-Butterfly::Butterfly()
-{
-    this->K1 = 90;
-    this->K2 = 110;
-    this->setMaturity(1.0);
-}
+
 Butterfly::Butterfly(double const& K1, double const& K2, double const& T)
 {
     this->K1 = K1;

@@ -1,11 +1,6 @@
 #include "Digital.h"
 #include <iostream>
 
-DigitalCall::DigitalCall()
-{
-	this->setStrike(100);
-	this->setMaturity(1.0);
-}
 
 DigitalCall::DigitalCall(double const& K, double const& T)
 {
@@ -29,11 +24,6 @@ void DigitalCall::print() const
 DigitalCall::~DigitalCall()
 = default;
 
-DigitalPut::DigitalPut()
-{
-	this->setStrike(100);
-	this->setMaturity(1.0);
-}
 
 DigitalPut::DigitalPut(double const& K, double const& T)
 {
@@ -57,12 +47,7 @@ void DigitalPut::print() const
 DigitalPut::~DigitalPut()
 = default;
 
-DoubleDigital::DoubleDigital()
-{
-    this->K1 = 90;
-    this->K2 = 100;
-    this->setMaturity(1.0);
-}
+
 DoubleDigital::DoubleDigital(double const& K1, double const& K2, double const& T)
 {
     this->K1 = K1;

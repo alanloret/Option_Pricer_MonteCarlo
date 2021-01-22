@@ -4,7 +4,6 @@
 class EuropeanCall : public PathIndependentOption
 {
 public:
-	EuropeanCall();
 	EuropeanCall(double const& K, double const& T);
 
 	double payoff(double const& S) const;
@@ -15,7 +14,6 @@ public:
 class EuropeanPut : public PathIndependentOption
 {
 public:
-	EuropeanPut();
 	EuropeanPut(double const& K, double const& T);
 
 	double payoff(double const& S) const;
@@ -26,7 +24,6 @@ public:
 class BullSpread : public PathIndependentOption
 {
 public:
-    BullSpread();
     BullSpread(double const& K1, double const& K2, double const& T);
 
     double payoff(double const& S) const;
@@ -41,7 +38,6 @@ private:
 class BearSpread : public PathIndependentOption
 {
 public:
-    BearSpread();
     BearSpread(double const& K1, double const& K2, double const& T);
 
     double payoff(double const& S) const;
@@ -56,7 +52,6 @@ private:
 class Strangle : public PathIndependentOption
 {
 public:
-    Strangle();
     Strangle(double const& K1, double const& K2, double const& T);
 
     double payoff(double const& S) const;
@@ -71,7 +66,6 @@ private:
 class Butterfly : public PathIndependentOption
 {
 public:
-    Butterfly();
     Butterfly(double const& K1, double const& K2, double const& T);
 
     double payoff(double const& S) const;

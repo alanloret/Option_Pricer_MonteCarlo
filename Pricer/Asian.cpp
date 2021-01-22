@@ -2,11 +2,6 @@
 #include <iostream>
 #include <cmath>
 
-AsianArithmeticCall::AsianArithmeticCall()
-{
-    this->setStrike(100);
-    this->setMaturity(1.0);
-}
 
 AsianArithmeticCall::AsianArithmeticCall(double const& K, double const& T)
 {
@@ -36,11 +31,6 @@ void AsianArithmeticCall::print() const
 AsianArithmeticCall::~AsianArithmeticCall()
 = default;
 
-AsianArithmeticPut::AsianArithmeticPut()
-{
-    this->setStrike(100);
-    this->setMaturity(1.0);
-}
 
 AsianArithmeticPut::AsianArithmeticPut(double const& K, double const& T)
 {
@@ -70,11 +60,6 @@ void AsianArithmeticPut::print() const
 AsianArithmeticPut::~AsianArithmeticPut()
 = default;
 
-AsianGeometricCall::AsianGeometricCall()
-{
-    this->setStrike(100);
-    this->setMaturity(1.0);
-}
 
 AsianGeometricCall::AsianGeometricCall(double const& K, double const& T)
 {
@@ -104,11 +89,6 @@ void AsianGeometricCall::print() const
 AsianGeometricCall::~AsianGeometricCall()
 = default;
 
-AsianGeometricPut::AsianGeometricPut()
-{
-    this->setStrike(100);
-    this->setMaturity(1.0);
-}
 
 AsianGeometricPut::AsianGeometricPut(double const& K, double const& T)
 {
