@@ -16,14 +16,14 @@ EuropeanCall::EuropeanCall(double const& K, double const& T)
 
 double EuropeanCall::payoff(double const& S) const
 {
-	if ((S-this->getStrike()) > 0)
-		return S-this->getStrike();
+	if ((S - this->getStrike()) > 0)
+		return S - this->getStrike();
 	return 0.0;
 }
 
 void EuropeanCall::print() const
 {
-	std::cout << "-- European Call --" << std::endl;
+	std::cout << "--- European Call ---" << std::endl;
 	PathIndependentOption::print();
 }
 
@@ -52,7 +52,7 @@ double EuropeanPut::payoff(double const& S) const
 
 void EuropeanPut::print() const
 {
-	std::cout << "-- European Put --" << std::endl;
+	std::cout << "--- European Put ---" << std::endl;
 	PathIndependentOption::print();
 }
 

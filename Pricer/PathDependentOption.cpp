@@ -45,6 +45,6 @@ PathDependentOption::~PathDependentOption()
 
 void PathDependentOption::print() const
 {
-	std::cout << "Strike K : " << K << std::endl;
-	std::cout << "Maturity T : " << T << " (in years)" << std::endl;
+	std::cout << " Strike K:        " << K << std::endl;
+	std::cout << " Maturity T :     " << T << " (in years)" << std::endl;
 }

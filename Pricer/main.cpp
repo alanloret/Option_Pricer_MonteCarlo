@@ -1,7 +1,3 @@
-// BlackScholes.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
-//
-
-#include <iostream>
 #include "BlackScholesModel.h"
 #include "MonteCarloPricer.h"
 #include "European.h"
@@ -10,11 +6,11 @@
 
 int main()
 {
-    BlackScholesModel model = BlackScholesModel(100, 0.05, 0.2); // Model to simulate prices
-    MonteCarloPricer optimizer = MonteCarloPricer(1e6); // Optimizer
+    BlackScholesModel model = BlackScholesModel(100, 0.15, 0.2); // Model to simulate prices
+    MonteCarloPricer optimizer = MonteCarloPricer(1e5, 252); // Optimizer
 
-    EuropeanCall call = EuropeanCall(100.0, 1.0); // European Call option
-    EuropeanPut put = EuropeanPut(100.0, 1.0); // European put
+    EuropeanCall call = EuropeanCall(110.0, 1.0); // European Call option
+    EuropeanPut put = EuropeanPut(90.0, 1.0); // European put
     optimizer.priceAndPrint(model, call);
     optimizer.priceAndPrint(model, put);
 
@@ -27,8 +23,6 @@ int main()
     AsianPut asian_put = AsianPut(100.0, 1.0);
     optimizer.priceAndShowAsian(model, asian_call);
     optimizer.priceAndShowAsian(model, asian_put);
-
-
 
 }
 

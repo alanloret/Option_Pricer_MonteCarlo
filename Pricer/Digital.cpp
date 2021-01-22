@@ -22,7 +22,7 @@ double DigitalCall::payoff(double const& S) const
 
 void DigitalCall::print() const
 {
-	std::cout << "-- Digital Call --" << std::endl;
+	std::cout << "--- Digital Call ---" << std::endl;
 	PathIndependentOption::print();
 }
 
@@ -44,14 +44,14 @@ DigitalPut::DigitalPut(double const& K, double const& T)
 
 double DigitalPut::payoff(double const& S) const
 {
-	if ((S - this->getStrike()) < 0)
+	if ((this->getStrike() - S) > 0)
 		return 1.0;
 	return 0.0;
 }
 
 void DigitalPut::print() const
 {
-	std::cout << "-- Digital Put --" << std::endl;
+	std::cout << "--- Digital Put ---" << std::endl;
 	PathIndependentOption::print();
 }
 

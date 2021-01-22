@@ -4,16 +4,16 @@
 
 MonteCarloPricer::MonteCarloPricer()
 {
-	this->num_sims = 1000;
-	this->n_steps = 250;
-	this->prices_vector = new std::vector<double>(250, 0);
+	this->num_sims = 1e6;
+	this->n_steps = 252;
+	this->prices_vector = new std::vector<double>(252, 0);
 }
 
 MonteCarloPricer::MonteCarloPricer(int const& num_sims)
 {
 	this->num_sims = num_sims;
-	this->n_steps = 250;
-	this->prices_vector = new std::vector<double>(250, 0);
+	this->n_steps = 252;
+	this->prices_vector = new std::vector<double>(252, 0);
 }
 
 MonteCarloPricer::MonteCarloPricer(int const& num_sims, int const& n_steps)
@@ -25,7 +25,7 @@ MonteCarloPricer::MonteCarloPricer(int const& num_sims, int const& n_steps)
 
 void MonteCarloPricer::setNumSims(int const& num_sims)
 {
-	this->num_sims = 1000;
+	this->num_sims = 1e6;
 }
 
 int MonteCarloPricer::getNumSims()
@@ -49,7 +49,7 @@ void MonteCarloPricer::priceAndShowAsian(BlackScholesModel const& model, AsianCa
 {
 	model.print();
 	option.print();
-	std::cout << "Estimated price : " << priceAsian(model, option) << std::endl << std::endl;
+	std::cout << " Estimated price: " << priceAsian(model, option) << std::endl << std::endl;
 }
 
 double MonteCarloPricer::priceAsian(BlackScholesModel const& model, AsianPut const& option)
@@ -68,7 +68,7 @@ void MonteCarloPricer::priceAndShowAsian(BlackScholesModel const& model, AsianPu
 {
     model.print();
     option.print();
-    std::cout << "Estimated price : " << priceAsian(model, option) << std::endl << std::endl;
+    std::cout << " Estimated price: " << priceAsian(model, option) << std::endl << std::endl;
 }
 
 void MonteCarloPricer::showPrices()

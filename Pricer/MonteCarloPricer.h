@@ -52,5 +52,5 @@ inline void MonteCarloPricer::priceAndPrint(BlackScholesModel const& model, T co
 {
 	model.print();
 	option.print();
-	std::cout << "Estimated price : " << price(model, option) << std::endl << std::endl;
+	std::cout << " Estimated price: " << price(model, option) << std::endl << std::endl;
 }

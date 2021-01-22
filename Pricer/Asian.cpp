@@ -16,13 +16,13 @@ AsianCall::AsianCall(double const& K, double const& T)
 double AsianCall::payoff(std::vector<double> const& prices_vector) const
 {
     double mean = 0;
-    for (int i = 0; i < static_cast<int>(prices_vector.size()); i++) {
-        mean += prices_vector[i];
+    for (double i : prices_vector) {
+        mean += i;
     }
     mean /= static_cast<double>(prices_vector.size());
 
-    if ((mean-this->getStrike()) > 0)
-        return mean-this->getStrike();
+    if ((mean - this->getStrike()) > 0)
+        return mean - this->getStrike();
     return 0.0;
 }
 
@@ -51,13 +51,13 @@ AsianPut::AsianPut(double const& K, double const& T)
 double AsianPut::payoff(std::vector<double> const& prices_vector) const
 {
 	double mean = 0;
-	for (int i = 0; i < static_cast<int>(prices_vector.size()); i++) {
-		mean += prices_vector[i];
+	for (double i : prices_vector) {
+		mean += i;
 	}
 	mean /= static_cast<double>(prices_vector.size());
 
-    if ((this->getStrike()-mean) > 0)
-        return this->getStrike()-mean;
+    if ((this->getStrike() - mean) > 0)
+        return this->getStrike() - mean;
     return 0.0;
 }
 
