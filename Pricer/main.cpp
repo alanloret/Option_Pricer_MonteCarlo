@@ -7,32 +7,32 @@
 int main()
 {
     BlackScholesModel model = BlackScholesModel(100, 0.15, 0.2); // Model to simulate prices
-    MonteCarloPricer optimizer = MonteCarloPricer(1e5, 252); // Optimizer
+    MonteCarloPricer optimizer = MonteCarloPricer(1e7); // Optimizer
 
-    EuropeanCall call = EuropeanCall(110.0, 1.0); // European Call option
-    EuropeanPut put = EuropeanPut(90.0, 1.0); // European put
-    optimizer.priceAndPrint(model, call);
-    optimizer.priceAndPrint(model, put);
+    EuropeanCall eu_call = EuropeanCall(100.0, 1.0); // European Call option
+    EuropeanPut eu_put = EuropeanPut(100.0, 1.0); // European put
+    optimizer.priceAndPrint(model, eu_call);
+    optimizer.priceAndPrint(model, eu_put);
 
-    DigitalCall digi_call = DigitalCall(100.0, 1.0);
-    DigitalPut digi_put = DigitalPut(100.0, 1.0);
+    DigitalCall digi_call = DigitalCall(100.0, 1.0); // Digital Call
+    DigitalPut digi_put = DigitalPut(100.0, 1.0); // Digital put
     optimizer.priceAndPrint(model, digi_call);
     optimizer.priceAndPrint(model, digi_put);
 
-    AsianCall asian_call = AsianCall(100.0, 1.0);
-    AsianPut asian_put = AsianPut(100.0, 1.0);
-    optimizer.priceAndShowAsian(model, asian_call);
-    optimizer.priceAndShowAsian(model, asian_put);
+    /* For the ASian simulation we need to reduce the number of path because we need to compute an
+     * arithmetic or a geometric mean which is n_steps times longer (here we take n_steps=252)*/
+
+    BlackScholesModel model_asian = BlackScholesModel(100, 0.15, 0.2); // Model to simulate prices
+    MonteCarloPricer optimizer_asian = MonteCarloPricer(1e5, 252); // Optimizer
+
+    AsianCall asian_arithm_call = AsianCall(100.0, 1.0,"Arithmetic"); // Asian Arithmetic Call
+    AsianPut asian_arithm_put = AsianPut(100.0, 1.0, "Arithmetic"); // Asia Arithmetic Put
+    optimizer_asian.priceAndShowAsian(model_asian, asian_arithm_call);
+    optimizer_asian.priceAndShowAsian(model_asian, asian_arithm_put);
+
+    AsianCall asian_geo_call = AsianCall(100.0, 1.0, "Geometric"); // Asian Geometric Call
+    AsianPut asian_geo_put = AsianPut(100.0, 1.0, "Geometric"); // Asian Geometric Put
+    optimizer_asian.priceAndShowAsian(model_asian, asian_geo_call);
+    optimizer_asian.priceAndShowAsian(model_asian, asian_geo_put);
 
 }
-
-// Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
-// Déboguer le programme : F5 ou menu Déboguer > Démarrer le débogage
-
-// Astuces pour bien démarrer : 
-//   1. Utilisez la fenêtre Explorateur de solutions pour ajouter des fichiers et les gérer.
-//   2. Utilisez la fenêtre Team Explorer pour vous connecter au contrôle de code source.
-//   3. Utilisez la fenêtre Sortie pour voir la sortie de la génération et d'autres messages.
-//   4. Utilisez la fenêtre Liste d'erreurs pour voir les erreurs.
-//   5. Accédez à Projet > Ajouter un nouvel élément pour créer des fichiers de code, ou à Projet > Ajouter un élément existant pour ajouter des fichiers de code existants au projet.
-//   6. Pour rouvrir ce projet plus tard, accédez à Fichier > Ouvrir > Projet et sélectionnez le fichier .sln.

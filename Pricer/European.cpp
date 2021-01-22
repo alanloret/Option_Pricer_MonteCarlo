@@ -1,6 +1,5 @@
 #include "European.h"
 #include <iostream>
-#include <cmath>
 
 EuropeanCall::EuropeanCall()
 {

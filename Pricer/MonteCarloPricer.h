@@ -51,6 +51,7 @@ template<typename T>
 inline void MonteCarloPricer::priceAndPrint(BlackScholesModel const& model, T const& option) const
 {
 	model.print();
+    std::cout << " Number of paths: " << num_sims << std::endl;
 	option.print();
 	std::cout << " Estimated price: " << price(model, option) << std::endl << std::endl;
 }

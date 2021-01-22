@@ -1,25 +1,45 @@
 #include "Asian.h"
 #include <iostream>
+#include <cmath>
 
 AsianCall::AsianCall()
 {
     this->setStrike(100);
     this->setMaturity(1);
+    this->setMethod("Arithmetic");
 }
 
 AsianCall::AsianCall(double const& K, double const& T)
 {
     this->setStrike(K);
     this->setMaturity(T);
+    this->setMethod("Arithmetic");
+}
+
+AsianCall::AsianCall(double const& K, double const& T, std::string const& M)
+{
+    this->setStrike(K);
+    this->setMaturity(T);
+    this->setMethod(M);
 }
 
 double AsianCall::payoff(std::vector<double> const& prices_vector) const
 {
     double mean = 0;
-    for (double i : prices_vector) {
-        mean += i;
+
+    if (this->getMethod() == "Arithmetic"){
+        for (double i : prices_vector) {
+            mean += i;
+        }
+        mean /= static_cast<double>(prices_vector.size());
+    } else if (this->getMethod() == "Geometric") {
+        for (double i : prices_vector) {
+            mean += log(i);
+        }
+        mean = exp(mean / static_cast<double>(prices_vector.size()));
+    } else {
+        return 0.0;
     }
-    mean /= static_cast<double>(prices_vector.size());
 
     if ((mean - this->getStrike()) > 0)
         return mean - this->getStrike();
@@ -28,7 +48,7 @@ double AsianCall::payoff(std::vector<double> const& prices_vector) const
 
 void AsianCall::print() const
 {
-    std::cout << "--- Asian Arithmetic Call ---" << std::endl;
+    std::cout << "--- Asian " << this->getMethod() << " Call ---" << std::endl;
     PathDependentOption::print();
 }
 
@@ -40,21 +60,39 @@ AsianPut::AsianPut()
 {
 	this->setStrike(100);
 	this->setMaturity(1);
+    this->setMethod("Arithmetic");
 }
 
 AsianPut::AsianPut(double const& K, double const& T)
 {
 	this->setStrike(K);
 	this->setMaturity(T);
+    this->setMethod("Arithmetic");
+}
+
+AsianPut::AsianPut(double const& K, double const& T, std::string const& M)
+{
+    this->setStrike(K);
+    this->setMaturity(T);
+    this->setMethod(M);
 }
 
 double AsianPut::payoff(std::vector<double> const& prices_vector) const
 {
 	double mean = 0;
-	for (double i : prices_vector) {
-		mean += i;
-	}
-	mean /= static_cast<double>(prices_vector.size());
+    if (this->getMethod() == "Arithmetic"){
+        for (double i : prices_vector) {
+            mean += i;
+        }
+        mean /= static_cast<double>(prices_vector.size());
+    } else if (this->getMethod() == "Geometric") {
+        for (double i : prices_vector) {
+            mean += log(i);
+        }
+        mean = exp(mean / static_cast<double>(prices_vector.size()));
+    } else {
+        return 0.0;
+    }
 
     if ((this->getStrike() - mean) > 0)
         return this->getStrike() - mean;
@@ -63,7 +101,7 @@ double AsianPut::payoff(std::vector<double> const& prices_vector) const
 
 void AsianPut::print() const
 {
-	std::cout << "--- Asian Arithmetic Put ---" << std::endl;
+	std::cout << "--- Asian " << this->getMethod() << " Put ---" << std::endl;
 	PathDependentOption::print();
 }
 

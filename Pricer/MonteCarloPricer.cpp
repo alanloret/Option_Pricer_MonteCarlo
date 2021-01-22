@@ -1,7 +1,6 @@
 #include "MonteCarloPricer.h"
 #include <iostream>
 
-
 MonteCarloPricer::MonteCarloPricer()
 {
 	this->num_sims = 1e6;
@@ -48,8 +47,14 @@ double MonteCarloPricer::priceAsian(BlackScholesModel const& model, AsianCall co
 void MonteCarloPricer::priceAndShowAsian(BlackScholesModel const& model, AsianCall const& option)
 {
 	model.print();
+    std::cout << " Number of paths: " << num_sims << std::endl;
 	option.print();
-	std::cout << " Estimated price: " << priceAsian(model, option) << std::endl << std::endl;
+    if (option.getMethod() != "Arithmetic" && option.getMethod() != "Geometric") {
+        std::cout << " Notimplemented - Unknown Method : " << option.getMethod() << std::endl;
+        std::cout << " Method should be Arithmetic or Geometric"<< std::endl << std::endl;
+    } else {
+        std::cout << " Estimated price: " << priceAsian(model, option) << std::endl << std::endl;
+    }
 }
 
 double MonteCarloPricer::priceAsian(BlackScholesModel const& model, AsianPut const& option)
@@ -67,8 +72,14 @@ double MonteCarloPricer::priceAsian(BlackScholesModel const& model, AsianPut con
 void MonteCarloPricer::priceAndShowAsian(BlackScholesModel const& model, AsianPut const& option)
 {
     model.print();
+    std::cout << " Number of paths: " << num_sims << std::endl;
     option.print();
-    std::cout << " Estimated price: " << priceAsian(model, option) << std::endl << std::endl;
+    if (option.getMethod() != "Arithmetic" && option.getMethod() != "Geometric") {
+        std::cout << " Notimplemented - Unknown Method : " << option.getMethod() << std::endl;
+        std::cout << " Method should be Arithmetic or Geometric"<< std::endl << std::endl;
+    } else {
+        std::cout << " Estimated price: " << priceAsian(model, option) << std::endl << std::endl;
+    }
 }
 
 void MonteCarloPricer::showPrices()
