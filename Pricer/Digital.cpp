@@ -27,8 +27,7 @@ void DigitalCall::print() const
 }
 
 DigitalCall::~DigitalCall()
-{
-}
+= default;
 
 DigitalPut::DigitalPut()
 {
@@ -56,5 +55,36 @@ void DigitalPut::print() const
 }
 
 DigitalPut::~DigitalPut()
+= default;
+
+DoubleDigital::DoubleDigital()
 {
+    this->K1 = 90;
+    this->K2 = 100;
+    this->setMaturity(1);
 }
+DoubleDigital::DoubleDigital(double const& K1, double const& K2, double const& T)
+{
+    this->K1 = K1;
+    this->K2 = K2;
+    this->setMaturity(T);
+}
+
+double DoubleDigital::payoff(double const& S) const
+{
+    if (K1 < S && K2 > S)
+        return 1.0;
+    return 0.0;
+}
+
+void DoubleDigital::print() const
+{
+    std::cout << "--- Double Digital ---" << std::endl;
+
+    std::cout << " Low Strike:      " << K1 << std::endl;
+    std::cout << " High Strike:     " << K2 << std::endl;
+    std::cout << " Maturity :       " << this->getMaturity() << std::endl;
+}
+
+DoubleDigital::~DoubleDigital()
+= default;

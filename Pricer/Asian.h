@@ -2,35 +2,50 @@
 #include "PathDependentOption.h"
 #include <vector>
 
-class AsianCall : public PathDependentOption
+class AsianArithmeticCall : public PathDependentOption
 {
 public:
-    AsianCall();
-    AsianCall(double const& K, double const& T);
-    AsianCall(double const& K, double const& T, std::string const& M);
+    AsianArithmeticCall();
+    AsianArithmeticCall(double const& K, double const& T);
 
     double payoff(std::vector<double> const& prices_vector) const;
     void print() const;
-    ~AsianCall();
-
-private:
-    std::vector<double> prices_vector;
+    ~AsianArithmeticCall();
 
 };
 
-
-class AsianPut : public PathDependentOption
+class AsianArithmeticPut : public PathDependentOption
 {
 public:
-	AsianPut();
-	AsianPut(double const& K, double const& T);
-    AsianPut(double const& K, double const& T, std::string const& M);
+    AsianArithmeticPut();
+    AsianArithmeticPut(double const& K, double const& T);
 
-	double payoff(std::vector<double> const& prices_vector) const;
-	void print() const;
-	~AsianPut();
+    double payoff(std::vector<double> const& prices_vector) const;
+    void print() const;
+    ~AsianArithmeticPut();
 
-private:
-	std::vector<double> prices_vector;
-	
+};
+
+class AsianGeometricCall : public PathDependentOption
+{
+public:
+    AsianGeometricCall();
+    AsianGeometricCall(double const& K, double const& T);
+
+    double payoff(std::vector<double> const& prices_vector) const;
+    void print() const;
+    ~AsianGeometricCall();
+
+};
+
+class AsianGeometricPut : public PathDependentOption
+{
+public:
+    AsianGeometricPut();
+    AsianGeometricPut(double const& K, double const& T);
+
+    double payoff(std::vector<double> const& prices_vector) const;
+    void print() const;
+    ~AsianGeometricPut();
+
 };

@@ -14,7 +14,7 @@ public:
 	virtual double payoff(double const& S) const;
 	virtual ~PathIndependentOption();
 
-	void print() const;
+    virtual void print() const;
 
 private:
 	double K;

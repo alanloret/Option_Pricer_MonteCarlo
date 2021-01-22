@@ -20,7 +20,7 @@ public:
 	virtual double payoff(std::vector<double> const& prices_vector) const;
 	virtual ~PathDependentOption();
 
-	void print() const;
+    virtual void print() const;
 
 private:
 	double K;

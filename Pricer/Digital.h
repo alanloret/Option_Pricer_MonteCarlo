@@ -23,3 +23,16 @@ public:
 	~DigitalPut();
 };
 
+class DoubleDigital : public PathIndependentOption
+{
+public:
+    DoubleDigital();
+    DoubleDigital(double const& K1, double const& K2, double const& T);
+
+    double payoff(double const& S) const;
+    void print() const;
+    ~DoubleDigital();
+private:
+    double K1;
+    double K2;
+};

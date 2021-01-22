@@ -16,7 +16,7 @@ public:
 	void print() const;
 
 private:
-	double gaussian_box_muller() const;
+	static double gaussian_box_muller() ;
 
 	double S;
 	double r;

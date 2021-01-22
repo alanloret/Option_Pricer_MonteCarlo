@@ -60,7 +60,7 @@ void BlackScholesModel::print() const
     std::cout << " Volatility:      " << v << std::endl;
 }
 
-double BlackScholesModel::gaussian_box_muller() const
+double BlackScholesModel::gaussian_box_muller()
 {
     double x;
     double y;
