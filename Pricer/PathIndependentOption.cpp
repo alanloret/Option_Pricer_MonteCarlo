@@ -3,8 +3,8 @@
 
 PathIndependentOption::PathIndependentOption()
 {
-	this->K = 100;
-	this->T = 1;
+	this->K = 100.0;
+	this->T = 1.0;
 }
 
 PathIndependentOption::PathIndependentOption(double const& K, double const& T)

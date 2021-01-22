@@ -1,8 +1,10 @@
 #pragma once
+
+
 class PathIndependentOption
 {
 public:
-	PathIndependentOption();
+    PathIndependentOption();
 	PathIndependentOption(double const& K, double const& T);
 
 	void setStrike(double const& K);

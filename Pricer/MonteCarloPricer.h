@@ -84,6 +84,8 @@ template<typename pathDependentOption>
 inline void MonteCarloPricer::priceAndPrintComplex(BlackScholesModel const& model, pathDependentOption const& option)
 {
     model.print();
+    std::cout << " Number of paths: " << num_sims << std::endl;
+    std::cout << " Number of steps: " << n_steps << std::endl;
     option.print();
     std::cout << " Estimated price: " << priceComplex(model, option) << std::endl << std::endl;
 }
@@ -103,6 +105,7 @@ template<typename pathIndependentOption>
 inline void MonteCarloPricer::priceAndPrintClassic(BlackScholesModel const& model, pathIndependentOption const& option) const
 {
     model.print();
+    std::cout << " Number of paths: " << num_sims << std::endl;
     option.print();
     std::cout << " Estimated price: " << priceClassic(model, option) << std::endl << std::endl;
 }
