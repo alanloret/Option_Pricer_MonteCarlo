@@ -2,6 +2,12 @@
 #include <iostream>
 #include <cmath>
 
+BlackScholesModel::BlackScholesModel()
+{
+    this->S = 100;
+    this->r = 0.05;
+    this->v = 0.02;
+}
 
 BlackScholesModel::BlackScholesModel(double const& S, double const& r, double const& v)
 {
@@ -67,7 +73,7 @@ double BlackScholesModel::gaussian_box_muller()
         x = 2.0 * rand() / static_cast<double>(RAND_MAX) - 1;
         y = 2.0 * rand() / static_cast<double>(RAND_MAX) - 1;
         euclid_sq = x * x + y * y;
-    } while (euclid_sq >= 1.0 || euclid_sq == 0);
+    } while (euclid_sq >= 1.0);
 
     return x * sqrt(-2 * log(euclid_sq) / euclid_sq);
 }

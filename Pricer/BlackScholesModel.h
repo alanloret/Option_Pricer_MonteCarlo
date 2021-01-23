@@ -4,6 +4,7 @@
 class BlackScholesModel
 {
 public:
+	BlackScholesModel();
 	BlackScholesModel(double const& S, double const& r, double const& v);
 
 	double generatePrice(double const& T) const;
@@ -15,7 +16,7 @@ public:
 	void print() const;
 
 private:
-	static double gaussian_box_muller() ;
+	static double gaussian_box_muller();
 
 	double S;
 	double r;

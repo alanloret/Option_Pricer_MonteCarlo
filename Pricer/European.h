@@ -4,75 +4,83 @@
 class EuropeanCall : public PathIndependentOption
 {
 public:
+	EuropeanCall();
 	EuropeanCall(double const& K, double const& T);
 
-	double payoff(double const& S) const;
-	void print() const;
+	double payoff(double const& S) const override;
+	double payoff(std::vector<double> const& prices_vector) const;
+	void print() const override;
 	~EuropeanCall();
 };
 
 class EuropeanPut : public PathIndependentOption
 {
 public:
+	EuropeanPut();
 	EuropeanPut(double const& K, double const& T);
 
-	double payoff(double const& S) const;
-	void print() const;
+	double payoff(double const& S) const override;
+	double payoff(std::vector<double> const& prices_vector) const;
+	void print() const override;
 	~EuropeanPut();
 };
 
 class BullSpread : public PathIndependentOption
 {
 public:
-    BullSpread(double const& K1, double const& K2, double const& T);
+	BullSpread();
+	BullSpread(double const& K1, double const& K2, double const& T);
 
-    double payoff(double const& S) const;
-    void print() const;
-    ~BullSpread();
-
+	double payoff(double const& S) const override;
+	double payoff(std::vector<double> const& prices_vector) const;
+	void print() const override;
+	~BullSpread();
 private:
-    double K1;
-    double K2;
+	double K1;
+	double K2;
 };
 
 class BearSpread : public PathIndependentOption
 {
 public:
-    BearSpread(double const& K1, double const& K2, double const& T);
+	BearSpread();
+	BearSpread(double const& K1, double const& K2, double const& T);
 
-    double payoff(double const& S) const;
-    void print() const;
-    ~BearSpread();
-
+	double payoff(double const& S) const override;
+	double payoff(std::vector<double> const& prices_vector) const;
+	void print() const override;
+	~BearSpread();
 private:
-    double K1;
-    double K2;
+	double K1;
+	double K2;
 };
 
 class Strangle : public PathIndependentOption
 {
 public:
-    Strangle(double const& K1, double const& K2, double const& T);
+	Strangle();
+	Strangle(double const& K1, double const& K2, double const& T);
 
-    double payoff(double const& S) const;
-    void print() const;
-    ~Strangle();
-
+	double payoff(double const& S) const override;
+	double payoff(std::vector<double> const& prices_vector) const;
+	void print() const override;
+	~Strangle();
 private:
-    double K1;
-    double K2;
+	double K1;
+	double K2;
 };
 
 class Butterfly : public PathIndependentOption
 {
 public:
-    Butterfly(double const& K1, double const& K2, double const& T);
+	Butterfly();
+	Butterfly(double const& K1, double const& K2, double const& T);
 
-    double payoff(double const& S) const;
-    void print() const;
-    ~Butterfly();
-
+	double payoff(double const& S) const override;
+	double payoff(std::vector<double> const& prices_vector) const;
+	void print() const override;
+	~Butterfly();
 private:
-    double K1;
-    double K2;
+	double K1;
+	double K2;
 };

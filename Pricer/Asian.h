@@ -5,43 +5,48 @@
 class AsianArithmeticCall : public PathDependentOption
 {
 public:
-    AsianArithmeticCall(double const& K, double const& T);
+	AsianArithmeticCall();
+	AsianArithmeticCall(double const& K, double const& T);
 
-    double payoff(std::vector<double> const& prices_vector) const;
-    void print() const;
-    ~AsianArithmeticCall();
-
+	double payoff(std::vector<double> const& prices_vector) const override;
+	void print() const override;
+	~AsianArithmeticCall();
+	
 };
 
 class AsianArithmeticPut : public PathDependentOption
 {
 public:
-    AsianArithmeticPut(double const& K, double const& T);
+	AsianArithmeticPut();
+	AsianArithmeticPut(double const& K, double const& T);
 
-    double payoff(std::vector<double> const& prices_vector) const;
-    void print() const;
-    ~AsianArithmeticPut();
+	double payoff(std::vector<double> const& prices_vector) const override;
+	void print() const override;
+	~AsianArithmeticPut();
 
 };
 
 class AsianGeometricCall : public PathDependentOption
 {
 public:
-    AsianGeometricCall(double const& K, double const& T);
+	AsianGeometricCall();
+	AsianGeometricCall(double const& K, double const& T);
 
-    double payoff(std::vector<double> const& prices_vector) const;
-    void print() const;
-    ~AsianGeometricCall();
+	double payoff(std::vector<double> const& prices_vector) const override;
+	void print() const override;
+	~AsianGeometricCall();
 
 };
 
 class AsianGeometricPut : public PathDependentOption
 {
 public:
-    AsianGeometricPut(double const& K, double const& T);
+	AsianGeometricPut();
+	AsianGeometricPut(double const& K, double const& T);
 
-    double payoff(std::vector<double> const& prices_vector) const;
-    void print() const;
-    ~AsianGeometricPut();
+	double payoff(std::vector<double> const& prices_vector) const override;
+	void print() const override;
+	~AsianGeometricPut();
 
 };
+
