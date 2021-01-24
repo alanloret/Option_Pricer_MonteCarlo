@@ -1,12 +1,10 @@
-// BlackScholes.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
-//
-
 #include "BlackScholesModel.h"
 #include "MonteCarloPricer.h"
 #include "European.h"
 #include "Digital.h"
 #include "Asian.h"
 #include "Complex.h"
+
 
 int main()
 {

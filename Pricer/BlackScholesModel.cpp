@@ -1,6 +1,13 @@
 #include "BlackScholesModel.h"
+#include <random>
 #include <iostream>
 #include <cmath>
+
+// Define our Uniform random generator on [-1,1]
+std::random_device rd;
+std::mt19937 mt(rd()); // Seed the random number generator mt with rd
+std::uniform_real_distribution<double> dist(-1.0, 1.0);
+
 
 BlackScholesModel::BlackScholesModel()
 {
@@ -66,12 +73,9 @@ double BlackScholesModel::gaussian_box_muller()
     double y;
     double euclid_sq;
 
-    // Continue generating two uniform random variables
-    // until the square of their "euclidean distance"
-    // is less than unity
     do {
-        x = 2.0 * rand() / static_cast<double>(RAND_MAX) - 1;
-        y = 2.0 * rand() / static_cast<double>(RAND_MAX) - 1;
+        x = dist(mt);
+        y = dist(mt);
         euclid_sq = x * x + y * y;
     } while (euclid_sq >= 1.0);
 
