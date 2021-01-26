@@ -10,7 +10,8 @@ public:
     void set_num_sims(int const& num_sims) { this->num_sims = num_sims; };
     double get_lb() const { return compute_lb(); };
     double get_ub() const { return compute_ub(); };
-
+    double getPrice() const { return price; };
+    double getStdev() const { return stdev; };
 
 private:
     double price;

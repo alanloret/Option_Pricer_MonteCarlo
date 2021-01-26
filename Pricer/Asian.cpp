@@ -4,8 +4,8 @@
 
 AsianArithmeticCall::AsianArithmeticCall()
 {
-	this->setStrike(100);
-	this->setMaturity(1);
+	this->setStrike(100.0);
+	this->setMaturity(1.0);
 }
 
 AsianArithmeticCall::AsianArithmeticCall(double const& K, double const& T)
@@ -16,7 +16,7 @@ AsianArithmeticCall::AsianArithmeticCall(double const& K, double const& T)
 
 double AsianArithmeticCall::payoff(std::vector<double> const& prices_vector) const
 {
-	double mean = 0;
+	double mean = 0.0;
 	for (double i : prices_vector) {
 		mean += i;
 	}
@@ -39,8 +39,8 @@ AsianArithmeticCall::~AsianArithmeticCall()
 
 AsianArithmeticPut::AsianArithmeticPut()
 {
-	this->setStrike(100);
-	this->setMaturity(1);
+	this->setStrike(100.0);
+	this->setMaturity(1.0);
 }
 
 AsianArithmeticPut::AsianArithmeticPut(double const& K, double const& T)
@@ -51,7 +51,7 @@ AsianArithmeticPut::AsianArithmeticPut(double const& K, double const& T)
 
 double AsianArithmeticPut::payoff(std::vector<double> const& prices_vector) const
 {
-	double mean = 0;
+	double mean = 0.0;
 	for (double i : prices_vector) {
 		mean += i;
 	}
@@ -74,8 +74,8 @@ AsianArithmeticPut::~AsianArithmeticPut()
 
 AsianGeometricCall::AsianGeometricCall()
 {
-	this->setStrike(100);
-	this->setMaturity(1);
+	this->setStrike(100.0);
+	this->setMaturity(1.0);
 }
 
 AsianGeometricCall::AsianGeometricCall(double const& K, double const& T)
@@ -86,7 +86,7 @@ AsianGeometricCall::AsianGeometricCall(double const& K, double const& T)
 
 double AsianGeometricCall::payoff(std::vector<double> const& prices_vector) const
 {
-	double geometric_mean = 0;
+	double geometric_mean = 0.0;
 	for (double i : prices_vector) {
 		geometric_mean += log(i);
 	}
@@ -109,8 +109,8 @@ AsianGeometricCall::~AsianGeometricCall()
 
 AsianGeometricPut::AsianGeometricPut()
 {
-	this->setStrike(100);
-	this->setMaturity(1);
+	this->setStrike(100.0);
+	this->setMaturity(1.0);
 }
 
 AsianGeometricPut::AsianGeometricPut(double const& K, double const& T)
@@ -121,7 +121,7 @@ AsianGeometricPut::AsianGeometricPut(double const& K, double const& T)
 
 double AsianGeometricPut::payoff(std::vector<double> const& prices_vector) const
 {
-	double geometric_mean = 0;
+	double geometric_mean = 0.0;
 	for (double i : prices_vector) {
 		geometric_mean += log(i);
 	}

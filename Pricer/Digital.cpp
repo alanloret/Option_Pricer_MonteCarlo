@@ -3,8 +3,8 @@
 
 DigitalCall::DigitalCall()
 {
-	this->setStrike(100);
-	this->setMaturity(1);
+	this->setStrike(100.0);
+	this->setMaturity(1.0);
 }
 
 DigitalCall::DigitalCall(double const& K, double const& T)
@@ -37,8 +37,8 @@ DigitalCall::~DigitalCall()
 
 DigitalPut::DigitalPut()
 {
-	this->setStrike(100);
-	this->setMaturity(1);
+	this->setStrike(100.0);
+	this->setMaturity(1.0);
 }
 
 DigitalPut::DigitalPut(double const& K, double const& T)
@@ -71,9 +71,9 @@ DigitalPut::~DigitalPut()
 
 DoubleDigital::DoubleDigital()
 {
-	this->K1 = 90;
-	this->K2 = 100;
-	this->setMaturity(1);
+	this->K1 = 90.0;
+	this->K2 = 100.0;
+	this->setMaturity(1.0);
 }
 DoubleDigital::DoubleDigital(double const& K1, double const& K2, double const& T) 
 {

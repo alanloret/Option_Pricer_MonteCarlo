@@ -1,13 +1,14 @@
 #pragma once
-#include <vector>
 #include "European.h"
 #include "Asian.h"
 #include "Digital.h"
 #include <string>
 #include <iostream>
+#include <vector>
 
 class Complex
 {
+	/* Class to create portfolio with a collection of basic options*/
 public:
 	Complex();
 	Complex(std::string const& name);
@@ -30,7 +31,55 @@ public:
 	void buyOption(AsianGeometricCall const& option, double const& multiplier);
 	void buyOption(AsianGeometricPut const& option, double const& multiplier);
 
+	// Overloading operators 
+	Complex operator+ (Complex const& options) const;
+	Complex& operator+= (Complex const& options);
+	Complex operator- (Complex const& options) const;
+	Complex& operator-= (Complex const& options);
+	Complex operator* (double const& x) const;
+	Complex& operator*= (double const& x);
+	Complex operator/ (double const& x) const;
+	Complex& operator/= (double const& x);
+
+	Complex& operator+= (EuropeanCall const& option);
+	Complex& operator+= (EuropeanPut const& option);
+	Complex& operator+= (DigitalCall const& option);
+	Complex& operator+= (DigitalPut const& option);
+	Complex& operator+= (AsianArithmeticCall const& option);
+	Complex& operator+= (AsianArithmeticPut const& option);
+	Complex& operator+= (AsianGeometricCall const& option);
+	Complex& operator+= (AsianGeometricPut const& option);
+
+	Complex operator+ (EuropeanCall const& option) const;
+	Complex operator+ (EuropeanPut const& option) const;
+	Complex operator+ (DigitalCall const& option) const;
+	Complex operator+ (DigitalPut const& option) const;
+	Complex operator+ (AsianArithmeticCall const& option) const;
+	Complex operator+ (AsianArithmeticPut const& option) const;
+	Complex operator+ (AsianGeometricCall const& option) const;
+	Complex operator+ (AsianGeometricPut const& option) const;
+
+	Complex& operator-= (EuropeanCall const& option);
+	Complex& operator-= (EuropeanPut const& option);
+	Complex& operator-= (DigitalCall const& option);
+	Complex& operator-= (DigitalPut const& option);
+	Complex& operator-= (AsianArithmeticCall const& option);
+	Complex& operator-= (AsianArithmeticPut const& option);
+	Complex& operator-= (AsianGeometricCall const& option);
+	Complex& operator-= (AsianGeometricPut const& option);
+
+	Complex operator- (EuropeanCall const& option) const;
+	Complex operator- (EuropeanPut const& option) const;
+	Complex operator- (DigitalCall const& option) const;
+	Complex operator- (DigitalPut const& option) const;
+	Complex operator- (AsianArithmeticCall const& option) const;
+	Complex operator- (AsianArithmeticPut const& option) const;
+	Complex operator- (AsianGeometricCall const& option) const;
+	Complex operator- (AsianGeometricPut const& option) const;
+
+
 	double getMaturity() const;
+	std::string getName() const;
 
 	void setName(std::string const& name);
 	void setMultiplier(double const& multiplier);
@@ -40,6 +89,7 @@ public:
 	void print() const;
 
 	~Complex();
+	
 
 private:
 	std::string name;
@@ -54,49 +104,53 @@ private:
 	std::vector<AsianGeometricCall> asian_geometric_call;
 	std::vector<AsianGeometricPut> asian_geometric_put;
 
+	Complex sum(Complex const& options) const;
+	void add(Complex const& options);
+
 };
 
-class BullSpread2 : public Complex
+// Replicating some basic options
+class BullSpreadComplex : public Complex
 {
 public:
-	BullSpread2(double const& K1, double const& K2, double const& T) {
-		this->setName("BullSpread2");
+	BullSpreadComplex(double const& K1, double const& K2, double const& T) {
+		this->setName("BullSpread");
 		this->buyOption(EuropeanCall(K1, T));
-		this->buyOption(EuropeanCall(K2, T), -1);
+		this->buyOption(EuropeanCall(K2, T), -1.0);
 	}
-	~BullSpread2() {}
+	~BullSpreadComplex() {}
 };
 
-class BearSpread2 : public Complex
+class BearSpreadComplex : public Complex
 {
 public:
-	BearSpread2(double const& K1, double const& K2, double const& T) {
-		this->setName("BearSpread2");
-		this->buyOption(EuropeanCall(K1, T), -1);
-		this->buyOption(EuropeanPut(K2, T));
+	BearSpreadComplex(double const& K1, double const& K2, double const& T) {
+		this->setName("BearSpread");
+		this->buyOption(EuropeanCall(K1, T), -1.0);
+		this->buyOption(EuropeanCall(K2, T));
 	}
-	~BearSpread2() {}
+	~BearSpreadComplex() {}
 };
 
-class Strangle2 : public Complex
+class StrangleComplex : public Complex
 {
 public:
-	Strangle2(double const& K1, double const& K2, double const& T) {
-		this->setName("Strangle2");
+	StrangleComplex(double const& K1, double const& K2, double const& T) {
+		this->setName("Strangle");
 		this->buyOption(EuropeanPut(K1, T));
 		this->buyOption(EuropeanCall(K2, T));
 	}
-	~Strangle2() {}
+	~StrangleComplex() {}
 };
 
-class Butterfly2 : public Complex
+class ButterflyComplex : public Complex
 {
 public:
-	Butterfly2(double const& K1, double const& K2, double const& T) {
-		this->setName("Butterfly2");
+	ButterflyComplex(double const& K1, double const& K2, double const& T) {
+		this->setName("Butterfly");
 		this->buyOption(EuropeanCall(K1, T));
-		this->buyOption(EuropeanPut((K1 + K2) / 2, T), 2);
+		this->buyOption(EuropeanCall((K1 + K2) / 2.0, T), -2.0);
 		this->buyOption(EuropeanCall(K2, T));
 	}
-	~Butterfly2() {}
+	~ButterflyComplex() {}
 };

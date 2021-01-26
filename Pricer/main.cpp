@@ -5,60 +5,89 @@
 #include "Asian.h"
 #include "Complex.h"
 
-
 int main()
 {
-    BlackScholesModel model = BlackScholesModel(100, 0.05, 0.2); // Model to simulate prices
-    MonteCarloPricer optimizer = MonteCarloPricer(1e5); // Optimizer
+    double starting_price = 100.0;
+    double risk_free_rate = 0.05;
+    double volatility = 0.2;
+    BlackScholesModel model(starting_price, risk_free_rate, volatility); // Model to simulate prices
 
-    EuropeanCall eu_call = EuropeanCall(100.0, 1.0); // European Call
+    double T = 1.0; // Maturity
+    int num_sims = 1e4;
+    int n_steps = 250; // Number of steps in the path generation process
+    MonteCarloPricer optimizer(num_sims, n_steps); // Optimizer
+
+    EuropeanCall eu_call(100.0, T); // European Call
     optimizer.priceAndPrintClassic(model, eu_call);
-    EuropeanPut eu_put = EuropeanPut(100.0, 1.0); // European Put
+    EuropeanPut eu_put(100.0, T); // European Put
     optimizer.priceAndPrintClassic(model, eu_put);
 
-    DigitalCall digital_call = DigitalCall(100.0, 1.0); // Digital Call
-    optimizer.priceAndPrintClassic(model, digital_call);
-    DigitalPut digital_put = DigitalPut(100.0, 1.0); // Digital Put
-    optimizer.priceAndPrintClassic(model, digital_put);
-
-    AsianArithmeticCall asian_arithmetic_call = AsianArithmeticCall(100.0, 1.0); // Asian Arithmetic Call
-    optimizer.priceAndPrintComplex(model, asian_arithmetic_call);
-    AsianArithmeticPut asian_arithmetic_put = AsianArithmeticPut(100.0, 1.0); // Asian Arithmetic Put
-    optimizer.priceAndPrintComplex(model, asian_arithmetic_put);
-
-    AsianGeometricCall asian_geometric_call = AsianGeometricCall(100.0, 1.0); // Asian Geometric Call
-    optimizer.priceAndPrintComplex(model, asian_geometric_call);
-    AsianGeometricPut asian_geometric_put = AsianGeometricPut(100.0, 1.0); // Asian Geometric Put
-    optimizer.priceAndPrintComplex(model, asian_geometric_put);
-
-    DoubleDigital double_digital = DoubleDigital(80.0, 120.0, 1.0); // Double Digital
-    optimizer.priceAndPrintClassic(model, double_digital);
-
-    BullSpread bull_spread = BullSpread(80.0, 120.0, 1.0); // Bullspread
+    BullSpread bull_spread(100.0, 120.0, T); // Bullspread
     optimizer.priceAndPrintClassic(model, bull_spread);
 
-    BearSpread bear_spread = BearSpread(80.0, 120.0, 1.0); // BearSpread
+    BearSpread bear_spread(80.0, 100.0, T); // BearSpread
     optimizer.priceAndPrintClassic(model, bear_spread);
 
-    Butterfly butterfly = Butterfly(80.0, 120.0, 1.0); //Butterfly
+    Butterfly butterfly(100.0, 120.0, T); // Butterfly
     optimizer.priceAndPrintClassic(model, butterfly);
 
+    Strangle strangle(100.0, 120.0, T); //Strangle
+    optimizer.priceAndPrintClassic(model, strangle);
 
-    Complex custom_option = Complex("Customized option");
+    DigitalCall digital_call(100.0, T); // Digital Call
+    optimizer.priceAndPrintClassic(model, digital_call);
+    DigitalPut digital_put(100.0, T); // Digital Put
+    optimizer.priceAndPrintClassic(model, digital_put);
+
+    DoubleDigital double_digital(100.0, 120.0, T); // Double Digital
+    optimizer.priceAndPrintClassic(model, double_digital);
+
+    AsianArithmeticCall asian_arithmetic_call(100.0, T); // Asian Arithmetic Call
+    optimizer.priceAndPrint(model, asian_arithmetic_call);
+    AsianArithmeticPut asian_arithmetic_put(100.0, T); // Asian Arithmetic Put
+    optimizer.priceAndPrint(model, asian_arithmetic_put);
+
+    AsianGeometricCall asian_geometric_call(100.0, T); // Asian Geometric Call
+    optimizer.priceAndPrint(model, asian_geometric_call);
+    AsianGeometricPut asian_geometric_put(100.0, T); // Asian Geometric Put
+    optimizer.priceAndPrint(model, asian_geometric_put);
+
+    Complex custom_option("Customized option");
     /* The repartition of this customized option :
-     - 25% Long European Call
-     - 25% Long Asian Arithmetic Put
-     - 50% Short Double Digital
+     - 1 Long European Call
+     - 1 Long Asian Arithmetic Put
+     - 3 Short Digital Call
+     Total number of Options purchased: 50 000 */
 
-     Total number of Options purchased: 200 000 */
+    DigitalCall triple_digital_call(120.0, T); // Create a triple digitalCall
+    triple_digital_call.setMultiplier(3.0);
+    
+    custom_option += eu_call ; // Buy European Call
+    custom_option += asian_arithmetic_put; // Buy Asian Arithmetic Put
+    custom_option -= triple_digital_call; // Sell triple digital Call
 
-    custom_option.buyOption(eu_call, 0.25);  // Buy European Call
-    custom_option.buyOption(asian_arithmetic_put, 0.25); // Buy 3 Asian Arithmetic Put
-    custom_option.buyOption(digital_put, -0.5); // Sell Double digital Option
-
-    custom_option.setMultiplier(200000.0); // Set the total number of options
+    custom_option *= 50000.0; // Set the total number of options
     optimizer.priceAndPrint(model, custom_option);
 
-    return 0;
+    /* If you want to test if our class Complex option is correct, you can compare the value of the
+     the direct computation of bullspread, bearspread, strangle and butterfly with the following command :
 
+    // Bullspread = Buy Call K1 and Sell Call K2 (k1 < K2)
+    BullSpreadComplex bull_spread_complex(100.0, 120.0, T);
+    optimizer.priceAndPrint(model, bull_spread_complex);
+
+    // Bearspread = Sell Call K1 and Buy Call K2 (k1 < K2)
+    BearSpreadComplex bear_spread_complex(100.0, 120.0, T);
+    optimizer.priceAndPrint(model, bear_spread_complex);
+
+    // Strangle = Buy Put K1 and Buy Call K2 (K1 < K2)
+    StrangleComplex strangle_complex(100.0, 120.0, T);
+    optimizer.priceAndPrint(model, strangle_complex);
+
+    // Butterfly = Buy Call K1, Buy Call K2 and Sell 2 Call (K1 + K2)/2 (K1 < K2)
+    ButterflyComplex butterfly_complex(100.0, 120.0, T);
+    optimizer.priceAndPrint(model, butterfly_complex);
+     */
+
+    return 0;
 }

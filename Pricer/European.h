@@ -25,6 +25,7 @@ public:
 	~EuropeanPut();
 };
 
+// Following options are not supported in Complex Class, use instead their Complex counterpart
 class BullSpread : public PathIndependentOption
 {
 public:

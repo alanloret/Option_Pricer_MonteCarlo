@@ -4,8 +4,8 @@
 
 MonteCarloPricer::MonteCarloPricer()
 {
-	this->num_sims = 1000;
-	this->n_steps = 25;
+	this->num_sims = 10000;
+	this->n_steps = 250;
 	this->prices_vector = new std::vector<double>(250, 0);
 }
 
