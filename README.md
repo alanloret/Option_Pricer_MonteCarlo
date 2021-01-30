@@ -30,20 +30,28 @@ On distingue les fichiers codant les méthodes de simulations, des fichiers coda
 Ainsi, 7 fichiers sont destinés à la mécanique de simulation et du calcul du prix :
 
 - **main.cpp** constitue le fichier principal contenant la fonction *main* avec quelques exemples d'utilisation du programme.
-- **BlackScholesModel.h**, **BlackScholesModel.cpp**, classe contenant l'objet *BlackScholesModel* permettant de générer des prix, ou des trajectoires de prix selon le model de Black-Scholes.
-- **MonteCarloPricer.h**, **MonteCarloPricer.cpp**, classe contenant l'objet *MonteCarloPricer* permettant d'appliquer la méthode Monte-Carlo afin d'estimer le prix d'option.
-- **PriceCI.h**, **PriceCI.cpp**, classe contenant l'objet *PriceCI* rassemblant les méthodes et attribus nécessaires au calcul de la variance asymptotique et du prix.
+- **BlackScholesModel.h**, **BlackScholesModel.cpp**, classe contenant l'objet *BlackScholesModel* permettant de générer 
+  des prix, ou des trajectoires de prix selon le model de Black-Scholes.
+- **MonteCarloPricer.h**, **MonteCarloPricer.cpp**, classe contenant l'objet *MonteCarloPricer* permettant d'appliquer 
+  la méthode Monte-Carlo afin d'estimer le prix d'option.
+- **PriceCI.h**, **PriceCI.cpp**, classe contenant l'objet *PriceCI* rassemblant les méthodes et attribus nécessaires 
+  au calcul de la variance asymptotique et du prix.
 
 Les fichiers restant codent les options :
--	**PathIndependent.h**, **PathIndependent.cpp** classe virtuelle contenant la structure basique des options dont le payoff ne dépend pas de la trajectoire du prix.
--	**PathDependent.h**, **PathDependent.cpp**, classe virtuelle contenant la structure basique des options dont le payoff dépend de la trajectoire du prix.
--	**European.h**, **European.cpp**, classe contenant les options *EuropeanCall*, *EuropeanPut*, *BullSpread*, *BearSpread*, *Strangle* et *Butterfly*.
--	**Digital.h**, **Digital.cpp**, classe contenant les options *DigitalCall*, *DigitalPut* et * DoubleDigital*.
--	**Asian.h**, **Asian.cpp**, classe contenant les options *AsianArithmeticCall*, *AsianArithmeticPut*, *AsianGeometricCall* et  *AsianGeometricPut*.
--	**Complex.h**, **Complex.cpp**, classe permettant de générer des options personnalisées en combinant ***uniquement*** les options suivantes *EuropeanCall*, 
-     *EuropeanPut*, *DigitalCall*, *DigitalPut*, *AsianArithmeticCall*, *AsianArithmeticPut*, *AsianGeometricCall* et  
-     *AsianGeometricPut*. On réplique, grâce à cette nouvelle classe, quelques options classiques comme le BullSpread 
-     ou le BearSpread.
+- **Option.h**, **Option.cpp**, classe virtuelle regroupant les méthodes et attribus communs des options basiques.
+- **PathIndependent.h**, **PathIndependent.cpp** classe virtuelle contenant la structure basique des options dont le payoff 
+  ne dépend pas de la trajectoire du prix.
+- **PathDependent.h**, **PathDependent.cpp**, classe virtuelle contenant la structure basique des options dont le payoff 
+  dépend de la trajectoire du prix.
+- **European.h**, **European.cpp**, classe contenant les options *EuropeanCall*, *EuropeanPut*, *BullSpread*, *BearSpread*, 
+  *Strangle* et *Butterfly*.
+- **Digital.h**, **Digital.cpp**, classe contenant les options *DigitalCall*, *DigitalPut* et *DoubleDigital*.
+- **Asian.h**, **Asian.cpp**, classe contenant les options *AsianArithmeticCall*, *AsianArithmeticPut*, *AsianGeometricCall* 
+  et  *AsianGeometricPut*.
+- **Complex.h**, **Complex.cpp**, classe permettant de générer des options personnalisées en combinant ***uniquement*** 
+  les options suivantes *EuropeanCall*, *EuropeanPut*, *DigitalCall*, *DigitalPut*, *AsianArithmeticCall*, *AsianArithmeticPut*, 
+  *AsianGeometricCall* et *AsianGeometricPut*. On réplique, grâce à cette nouvelle classe, quelques options classiques 
+  comme le BullSpread ou le BearSpread.
 
 ## Utilisation
 
