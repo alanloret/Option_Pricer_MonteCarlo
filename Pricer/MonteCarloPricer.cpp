@@ -58,4 +58,3 @@ MonteCarloPricer::~MonteCarloPricer()
 	delete prices_vector;
 }
 
-

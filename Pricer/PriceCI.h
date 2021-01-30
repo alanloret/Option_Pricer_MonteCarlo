@@ -20,4 +20,3 @@ private:
     double compute_lb() const; // Compute lower bound of confidence interval
     double compute_ub() const; // Compute upper bound of confidence interval
 };
-

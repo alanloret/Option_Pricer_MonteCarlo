@@ -11,7 +11,7 @@ public:
 	double payoff(std::vector<double> const& prices_vector) const override;
 	void print() const override;
 	~AsianArithmeticCall();
-	
+
 };
 
 class AsianArithmeticPut : public PathDependentOption
@@ -49,4 +49,3 @@ public:
 	~AsianGeometricPut();
 
 };
-

@@ -23,7 +23,7 @@ double AsianArithmeticCall::payoff(std::vector<double> const& prices_vector) con
 	mean /= static_cast<double>(prices_vector.size());
 
 	if ((mean - this->getStrike()) > 0)
-		return (mean - this->getStrike())*getMultiplier();
+		return (mean - this->getStrike()) * getMultiplier();
 	return 0.0;
 }
 

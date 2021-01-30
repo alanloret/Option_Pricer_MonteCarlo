@@ -75,7 +75,7 @@ DoubleDigital::DoubleDigital()
 	this->K2 = 100.0;
 	this->setMaturity(1.0);
 }
-DoubleDigital::DoubleDigital(double const& K1, double const& K2, double const& T) 
+DoubleDigital::DoubleDigital(double const& K1, double const& K2, double const& T)
 {
 	this->K1 = K1;
 	this->K2 = K2;

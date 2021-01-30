@@ -22,4 +22,3 @@ private:
 	double r;
 	double v;
 };
-

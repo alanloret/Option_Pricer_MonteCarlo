@@ -15,8 +15,8 @@ EuropeanCall::EuropeanCall(double const& K, double const& T)
 
 double EuropeanCall::payoff(double const& S) const
 {
-	if ((S-this->getStrike()) > 0)
-		return (S-this->getStrike()) * getMultiplier();
+	if ((S - this->getStrike()) > 0)
+		return (S - this->getStrike()) * getMultiplier();
 	return 0.0;
 }
 
@@ -138,9 +138,9 @@ double BearSpread::payoff(std::vector<double> const& prices_vector) const
 void BearSpread::print() const
 {
 	std::cout << "--- Bear Spread ---" << std::endl;
-    std::cout << " Low Strike:      " << K1 << std::endl;
-    std::cout << " High Strike:     " << K2 << std::endl;
-    std::cout << " Maturity:        " << this->getMaturity() << std::endl;
+	std::cout << " Low Strike:      " << K1 << std::endl;
+	std::cout << " High Strike:     " << K2 << std::endl;
+	std::cout << " Maturity:        " << this->getMaturity() << std::endl;
 }
 
 BearSpread::~BearSpread()
@@ -177,9 +177,9 @@ double Strangle::payoff(std::vector<double> const& prices_vector) const
 void Strangle::print() const
 {
 	std::cout << "--- Strangle ---" << std::endl;
-    std::cout << " Low Strike:      " << K1 << std::endl;
-    std::cout << " High Strike:     " << K2 << std::endl;
-    std::cout << " Maturity:        " << this->getMaturity() << std::endl;
+	std::cout << " Low Strike:      " << K1 << std::endl;
+	std::cout << " High Strike:     " << K2 << std::endl;
+	std::cout << " Maturity:        " << this->getMaturity() << std::endl;
 }
 
 Strangle::~Strangle()
@@ -201,9 +201,9 @@ Butterfly::Butterfly(double const& K1, double const& K2, double const& T)
 
 double Butterfly::payoff(double const& S) const
 {
-	if (K1 < S && S < (K1+K2)/2.0)
+	if (K1 < S && S < (K1 + K2) / 2.0)
 		return (S - K1) * getMultiplier();
-	else if ((K1+K2)/2.0 < S && S < K2)
+	else if ((K1 + K2) / 2.0 < S && S < K2)
 		return (K2 - S) * getMultiplier();
 	return 0.0;
 }
@@ -216,9 +216,9 @@ double Butterfly::payoff(std::vector<double> const& prices_vector) const
 void Butterfly::print() const
 {
 	std::cout << "--- Butterfly ---" << std::endl;
-    std::cout << " Low Strike:      " << K1 << std::endl;
-    std::cout << " High Strike:     " << K2 << std::endl;
-    std::cout << " Maturity:        " << this->getMaturity() << std::endl;
+	std::cout << " Low Strike:      " << K1 << std::endl;
+	std::cout << " High Strike:     " << K2 << std::endl;
+	std::cout << " Maturity:        " << this->getMaturity() << std::endl;
 }
 
 Butterfly::~Butterfly()

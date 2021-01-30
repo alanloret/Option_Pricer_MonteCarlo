@@ -13,7 +13,7 @@ int main()
     BlackScholesModel model(starting_price, risk_free_rate, volatility); // Model to simulate prices
 
     double T = 1.0; // Maturity
-    int num_sims = 1e4;
+    int num_sims = 10000;
     int n_steps = 250; // Number of steps in the path generation process
     MonteCarloPricer optimizer(num_sims, n_steps); // Optimizer
 
@@ -62,7 +62,7 @@ int main()
     DigitalCall triple_digital_call(120.0, T); // Create a triple digitalCall
     triple_digital_call.setMultiplier(3.0);
     
-    custom_option += eu_call ; // Buy European Call
+    custom_option += eu_call; // Buy European Call
     custom_option += asian_arithmetic_put; // Buy Asian Arithmetic Put
     custom_option -= triple_digital_call; // Sell triple digital Call
 
@@ -88,6 +88,4 @@ int main()
     ButterflyComplex butterfly_complex(100.0, 120.0, T);
     optimizer.priceAndPrint(model, butterfly_complex);
      */
-
-    return 0;
 }

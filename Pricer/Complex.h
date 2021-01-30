@@ -89,7 +89,7 @@ public:
 	void print() const;
 
 	~Complex();
-	
+
 
 private:
 	std::string name;

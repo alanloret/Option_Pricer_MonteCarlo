@@ -3,7 +3,7 @@
 Complex::Complex()
 {
 	max_T = 0.0;
-    name = "Complex Option";
+	name = "Complex Option";
 }
 
 Complex::Complex(std::string const& name)
@@ -60,10 +60,11 @@ void Complex::buyOption(AsianGeometricPut const& option)
 	max_T = std::max(max_T, option.getMaturity());
 }
 
+
 void Complex::buyOption(EuropeanCall const& option, double const& multiplier)
 {
 	EuropeanCall new_option = EuropeanCall(option);
-	new_option.setMultiplier(multiplier*new_option.getMultiplier());
+	new_option.setMultiplier(multiplier * new_option.getMultiplier());
 	european_call.push_back(new_option);
 	max_T = std::max(max_T, new_option.getMaturity());
 
@@ -135,7 +136,7 @@ Complex Complex::operator+(Complex const& options) const
 Complex& Complex::operator+=(Complex const& options)
 {
 	add(options);
-	name +=  " + " + options.getName();
+	name += " + " + options.getName();
 	return *this;
 }
 
@@ -391,28 +392,28 @@ void Complex::setName(std::string const& name)
 
 void Complex::setMultiplier(double const& multiplier)
 {
-	for (auto & i : european_call) {
+	for (auto& i : european_call) {
 		i.setMultiplier(i.getMultiplier() * multiplier);
 	}
-	for (auto & i : european_put) {
+	for (auto& i : european_put) {
 		i.setMultiplier(i.getMultiplier() * multiplier);
 	}
-	for (auto & i : digital_call) {
+	for (auto& i : digital_call) {
 		i.setMultiplier(i.getMultiplier() * multiplier);
 	}
-	for (auto & i : digital_put) {
+	for (auto& i : digital_put) {
 		i.setMultiplier(i.getMultiplier() * multiplier);
 	}
-	for (auto & i : asian_arithmetic_call) {
+	for (auto& i : asian_arithmetic_call) {
 		i.setMultiplier(i.getMultiplier() * multiplier);
 	}
-	for (auto & i : asian_arithmetic_put) {
+	for (auto& i : asian_arithmetic_put) {
 		i.setMultiplier(i.getMultiplier() * multiplier);
 	}
-	for (auto & i : asian_geometric_call) {
+	for (auto& i : asian_geometric_call) {
 		i.setMultiplier(i.getMultiplier() * multiplier);
 	}
-	for (auto & i : asian_geometric_put) {
+	for (auto& i : asian_geometric_put) {
 		i.setMultiplier(i.getMultiplier() * multiplier);
 	}
 }
@@ -420,28 +421,28 @@ void Complex::setMultiplier(double const& multiplier)
 double Complex::payoff(std::vector<double> const& prices_vector) const
 {
 	double sum = 0.0;
-	for (const auto & i : european_call) {
+	for (const auto& i : european_call) {
 		sum += i.payoff(prices_vector);
 	}
-	for (const auto & i : european_put) {
+	for (const auto& i : european_put) {
 		sum += i.payoff(prices_vector);
 	}
-	for (const auto & i : digital_call) {
+	for (const auto& i : digital_call) {
 		sum += i.payoff(prices_vector);
 	}
-	for (const auto & i : digital_put) {
+	for (const auto& i : digital_put) {
 		sum += i.payoff(prices_vector);
 	}
-	for (const auto & i : asian_arithmetic_call) {
+	for (const auto& i : asian_arithmetic_call) {
 		sum += i.payoff(prices_vector);
 	}
-	for (const auto & i : asian_arithmetic_put) {
+	for (const auto& i : asian_arithmetic_put) {
 		sum += i.payoff(prices_vector);
 	}
-	for (const auto & i : asian_geometric_call) {
+	for (const auto& i : asian_geometric_call) {
 		sum += i.payoff(prices_vector);
 	}
-	for (const auto & i : asian_geometric_put) {
+	for (const auto& i : asian_geometric_put) {
 		sum += i.payoff(prices_vector);
 	}
 	return sum;
@@ -449,38 +450,38 @@ double Complex::payoff(std::vector<double> const& prices_vector) const
 
 void Complex::print() const
 {
-	std::cout << "** Complex Option : "<< name << " ** "<< std::endl;
+	std::cout << "** Complex Option : " << name << " ** " << std::endl;
 	std::cout << " Max maturity: " << max_T << std::endl;
 	std::cout << " Composed of " << std::endl;
-	for (const auto & i : european_call) {
+	for (const auto& i : european_call) {
 		std::cout << "* ";
 		i.print();
 	}
-	for (const auto & i : european_put) {
+	for (const auto& i : european_put) {
 		std::cout << "* ";
 		i.print();
 	}
-	for (const auto & i : digital_call) {
+	for (const auto& i : digital_call) {
 		std::cout << "* ";
 		i.print();
 	}
-	for (const auto & i : digital_put) {
+	for (const auto& i : digital_put) {
 		std::cout << "* ";
 		i.print();
 	}
-	for (const auto & i : asian_arithmetic_call) {
+	for (const auto& i : asian_arithmetic_call) {
 		std::cout << "* ";
 		i.print();
 	}
-	for (const auto & i : asian_arithmetic_put) {
+	for (const auto& i : asian_arithmetic_put) {
 		std::cout << "* ";
 		i.print();
 	}
-	for (const auto & i : asian_geometric_call) {
+	for (const auto& i : asian_geometric_call) {
 		std::cout << "* ";
 		i.print();
 	}
-	for (const auto & i : asian_geometric_put) {
+	for (const auto& i : asian_geometric_put) {
 		std::cout << "* ";
 		i.print();
 	}
@@ -502,7 +503,7 @@ Complex Complex::sum(Complex const& options) const
 	res.asian_arithmetic_put.insert(res.asian_arithmetic_put.end(), asian_arithmetic_put.begin(), asian_arithmetic_put.end());
 	res.asian_geometric_call.insert(res.asian_geometric_call.end(), asian_geometric_call.begin(), asian_geometric_call.end());
 	res.asian_geometric_put.insert(res.asian_geometric_put.end(), asian_geometric_put.begin(), asian_geometric_put.end());
-	
+
 	res.max_T = std::max(res.max_T, max_T);
 
 	return res;
