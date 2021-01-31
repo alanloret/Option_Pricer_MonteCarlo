@@ -25,7 +25,7 @@ int main()
     BullSpread bull_spread(100.0, 120.0, T); // Bullspread
     optimizer.priceAndPrintClassic(model, bull_spread);
 
-    BearSpread bear_spread(80.0, 100.0, T); // BearSpread
+    BearSpread bear_spread(100.0, 120.0, T); // BearSpread
     optimizer.priceAndPrintClassic(model, bear_spread);
 
     Butterfly butterfly(100.0, 120.0, T); // Butterfly
@@ -72,11 +72,11 @@ int main()
     /* If you want to test if our class Complex option is correct, you can compare the value of the
      the direct computation of bullspread, bearspread, strangle and butterfly with the following command :
 
-    // Bullspread = Buy Call K1 and Sell Call K2 (k1 < K2)
+    // Bullspread = Buy Call K1 and Sell Call K2 (K1 < K2)
     BullSpreadComplex bull_spread_complex(100.0, 120.0, T);
     optimizer.priceAndPrint(model, bull_spread_complex);
 
-    // Bearspread = Sell Call K1 and Buy Call K2 (k1 < K2)
+    // Bearspread = Sell Put K1 and Buy Put K2 (K1 < K2)
     BearSpreadComplex bear_spread_complex(100.0, 120.0, T);
     optimizer.priceAndPrint(model, bear_spread_complex);
 
@@ -87,5 +87,5 @@ int main()
     // Butterfly = Buy Call K1, Buy Call K2 and Sell 2 Call (K1 + K2)/2 (K1 < K2)
     ButterflyComplex butterfly_complex(100.0, 120.0, T);
     optimizer.priceAndPrint(model, butterfly_complex);
-     */
+    */
 }

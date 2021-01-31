@@ -84,7 +84,7 @@ DoubleDigital::DoubleDigital(double const& K1, double const& K2, double const& T
 
 double DoubleDigital::payoff(double const& S) const
 {
-	if (K1 < S && K2 > S)
+	if (K1 < S && S < K2)
 		return 1.0 * getMultiplier();
 	return 0.0;
 }

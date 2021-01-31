@@ -86,7 +86,7 @@ double BullSpread::payoff(double const& S) const
 {
 	if (K1 < S && K2 > S)
 		return (S - K1) * getMultiplier();
-	else if (K2 < S)
+	else if (K2 <= S)
 		return (K2 - K1) * getMultiplier();
 	return 0.0;
 }
@@ -124,9 +124,9 @@ BearSpread::BearSpread(double const& K1, double const& K2, double const& T)
 double BearSpread::payoff(double const& S) const
 {
 	if (K1 < S && K2 > S)
-		return -(S - K1) * getMultiplier();
-	else if (K2 < S)
-		return -(K2 - K1) * getMultiplier();
+		return (K2 - S) * getMultiplier();
+	else if (S <= K1)
+		return (K2 - K1) * getMultiplier();
 	return 0.0;
 }
 
@@ -201,7 +201,7 @@ Butterfly::Butterfly(double const& K1, double const& K2, double const& T)
 
 double Butterfly::payoff(double const& S) const
 {
-	if (K1 < S && S < (K1 + K2) / 2.0)
+	if (K1 < S && S <= (K1 + K2) / 2.0)
 		return (S - K1) * getMultiplier();
 	else if ((K1 + K2) / 2.0 < S && S < K2)
 		return (K2 - S) * getMultiplier();

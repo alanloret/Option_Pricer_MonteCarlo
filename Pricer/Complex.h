@@ -126,8 +126,8 @@ class BearSpreadComplex : public Complex
 public:
 	BearSpreadComplex(double const& K1, double const& K2, double const& T) {
 		this->setName("BearSpread");
-		this->buyOption(EuropeanCall(K1, T), -1.0);
-		this->buyOption(EuropeanCall(K2, T));
+		this->buyOption(EuropeanPut(K1, T), -1.0);
+		this->buyOption(EuropeanPut(K2, T));
 	}
 	~BearSpreadComplex() {}
 };
