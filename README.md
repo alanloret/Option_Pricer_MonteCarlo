@@ -1,14 +1,14 @@
 # Option_Pricer_MonteCarlo
 
-**Auteur** : Alan Loret
+**Author** : Alan Loret
 
-**Equipe** : Groupe C++ ENSAE 2020-2021
+**Team** : ENSAE 2020-2021 C++ Group
 
-**Réviseur** : Alan Loret
+**Reviewer** : Alan Loret
 
-**Créé le** : 10/12/2020
+**Created on** : 10/12/2020
 
-**Mis à jour le** : 26/01/2020
+**Updated on** : 26/01/2020
 
 # Problem
 
