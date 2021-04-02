@@ -10,114 +10,78 @@
 
 **Mis à jour le** : 26/01/2020
 
-# Problématique
+# Problem
 
-L’objectif de ce projet est de développer un pricer d’options.
-Il existe de multiples manières d’évaluer des options : l'approche par arbres, par équations aux dérivées partielles, ... 
-Ici, nous nous concentrons sur l’approche Monte-Carlo. Elle consiste à simuler un grand nombre de réalisations et d'en 
-déduire par la loi des grands nombres une approximation du prix. Nous nous plaçons dans le modèle de Black-Scholes, qui 
-en fonction d'un paramètre de taux d'intérêt et d'un paramètre de volatilité propose une génération de la trajectoire de prix. 
-Nous nous appuyons donc sur ce modèle pour simuler l'évolution du prix d'un sousjacent fictif et déterminer le prix d'une 
-option dérivée de celui-ci.
+The objective of this project is to develop an option pricer.
+There are many ways to evaluate options: the tree approach, the partial differential equation approach, ... 
+Here, we focus on the Monte-Carlo approach. It consists in simulating a large number of realizations and deducing from them an approximation of the price by the law of large numbers. We place ourselves in the Black-Scholes model, which according to an interest rate parameter and a volatility parameter proposes a generation of the price trajectory. 
+We use this model to simulate the evolution of the price of a fictitious underlying asset and to determine the price of an option derived from it.
 
-# I - Programme
+# I - Program
 
 ## Structure
 
-Le programme se compose de 19 fichiers. 
-On distingue les fichiers codant les méthodes de simulations, des fichiers codant les options.
+The program is composed of 19 files. 
+We distinguish the files coding the simulation methods from the files coding the options.
 
-Ainsi, 7 fichiers sont destinés à la mécanique de simulation et du calcul du prix :
+Thus, 7 files are intended for the mechanics of simulation and price calculation:
 
-- **main.cpp** constitue le fichier principal contenant la fonction *main* avec quelques exemples d'utilisation du programme.
-- **BlackScholesModel.h**, **BlackScholesModel.cpp**, classe contenant l'objet *BlackScholesModel* permettant de générer 
-  des prix, ou des trajectoires de prix selon le model de Black-Scholes.
-- **MonteCarloPricer.h**, **MonteCarloPricer.cpp**, classe contenant l'objet *MonteCarloPricer* permettant d'appliquer 
-  la méthode Monte-Carlo afin d'estimer le prix d'option.
-- **PriceCI.h**, **PriceCI.cpp**, classe contenant l'objet *PriceCI* rassemblant les méthodes et attribus nécessaires 
-  au calcul de la variance asymptotique et du prix.
+- **main.cpp** is the main file containing the *main* function with some examples of use of the program.
+- **BlackScholesModel.h**, **BlackScholesModel.cpp**, is a class containing the *BlackScholesModel* object allowing to generate prices, or price paths according to the Black-Scholes model.
+- **MonteCarloPricer.h**, **MonteCarloPricer.cpp**, is a class containing the *MonteCarloPricer* object allowing to apply the Monte-Carlo method to estimate the option price.
+- **PriceCI.h**, **PriceCI.cpp**, is a class containing the *PriceCI* object gathering the methods and attributes necessary to compute the asymptotic variance and the price.
 
-Les fichiers restant codent les options :
-- **Option.h**, **Option.cpp**, classe virtuelle regroupant les méthodes et attribus communs des options basiques.
-- **PathIndependent.h**, **PathIndependent.cpp** classe virtuelle contenant la structure basique des options dont le payoff 
-  ne dépend pas de la trajectoire du prix.
-- **PathDependent.h**, **PathDependent.cpp**, classe virtuelle contenant la structure basique des options dont le payoff 
-  dépend de la trajectoire du prix.
-- **European.h**, **European.cpp**, classe contenant les options *EuropeanCall*, *EuropeanPut*, *BullSpread*, *BearSpread*, 
-  *Strangle* et *Butterfly*.
-- **Digital.h**, **Digital.cpp**, classe contenant les options *DigitalCall*, *DigitalPut* et *DoubleDigital*.
-- **Asian.h**, **Asian.cpp**, classe contenant les options *AsianArithmeticCall*, *AsianArithmeticPut*, *AsianGeometricCall* 
-  et  *AsianGeometricPut*.
-- **Complex.h**, **Complex.cpp**, classe permettant de générer des options personnalisées en combinant ***uniquement*** 
-  les options suivantes *EuropeanCall*, *EuropeanPut*, *DigitalCall*, *DigitalPut*, *AsianArithmeticCall*, *AsianArithmeticPut*, 
-  *AsianGeometricCall* et *AsianGeometricPut*. On réplique, grâce à cette nouvelle classe, quelques options classiques 
-  comme le BullSpread ou le BearSpread.
+The remaining files code the options:
+- **Option.h**, **Option.cpp**, is a virtual class gathering the common methods and attributes of basic options.
+- **PathIndependent.h**, **PathIndependent.cpp** , is a virtual class containing the basic structure of the options whose payoff does not depend on the path of the price.
+- **PathDependent.h**, **PathDependent.cpp**, is a virtual class containing the basic structure of options whose payoff depends on the price path.
+- **European.h**, **European.cpp**, is a class containing the options *EuropeanCall*, *EuropeanPut*, *BullSpread*, *BearSpread*, *Strangle* and *Butterfly*.
+- **Digital.h**, **Digital.cpp**, is a class containing the options *DigitalCall*, *DigitalPut* and *DoubleDigital*.
+- **Asian.h**, **Asian.cpp**, is a class containing the options *AsianArithmeticCall*, *AsianArithmeticPut*, *AsianGeometricCall* and *AsianGeometricPut*.
+- **Complex.h**, **Complex.cpp**, class to generate custom options by combining ***only*** the following options *EuropeanCall*, *EuropeanPut*, *DigitalCall*, *DigitalPut*, *AsianArithmeticCall*, *AsianArithmeticPut*, *AsianGeometricCall* and *AsianGeometricPut*. We replicate, thanks to this new class, some classical options like BullSpread or BearSpread.
 
-## Utilisation
+## Usage 
 
-L'utilisateur doit spécifier plusieurs valeurs pour faire fonctionner le programme :
-1. Création du modèle de Black Scholes
-- *S*, le prix actuel du sous-jacent.
-- *r*, le taux d'intérêt sans risque.
-- *v*, la volatilité.
-2. Création de l'optimisateur
-- *N*, nombre de simulations dans l'algorithme de Monte-Carlo.
-- *steps* (facultatif), nombre d'étapes pour la génération de la trajectoire de prix.
-3.  Création d'une option
-- *K*, le ou les strikes de l'option.
-- *T*, la maturité.
+The user must specify several values to make the program work:
+1. Creation of the Black Scholes model
+- *S*, the current price of the underlying asset.
+- *r*, the risk-free interest rate.
+- *v*, the volatility.
+2. Creation of the optimizer
+- *N*, number of simulations in the Monte-Carlo algorithm.
+- *steps* (optional), number of steps for the generation of the price path.
+3.  Creation of an option
+- *K*, the strike(s) of the option.
+- T*, the maturity.
 
-**Attention** : Deux méthodes sont disponibles pour calculer le prix d'une option : *priceAndPrint* et *priceAndPrintClassic*. 
-La première accepte toutes les options, et génère une trajectoire complète du prix à chaque itération de l'algorithme de 
-Monte-Carlo. Cela permet d'évaluer les options selon la trajectoire du prix. Pour les options qui ne dépendent pas de la 
-trajectoire du prix, on peut gagner du temps en ne calculant que le prix à maturité sans générer la trajectoire du prix 
-grâce à la méthode *priceAndPrintClassic*. On ne peut donc pas utiliser cette méthode pour estimer le prix d'une option 
-Asiatique qui dépend de la trajectoire du prix ni pour les options créées à partir de la classe *Complex*.
+**Caution**: Two methods are available to calculate the price of an option: *priceAndPrint* and *priceAndPrintClassic*. 
+The first one accepts all options, and generates a complete price trajectory at each iteration of the Monte-Carlo algorithm. This allows options to be evaluated according to the price trajectory. For options that do not depend on the price path, we can save time by computing only the price at maturity without generating the price path using the *priceAndPrintClassic* method. Therefore, we cannot use this method to estimate the price of an Asian option that depends on the price path nor for options created from the *Complex* class.
 
+## Working hypothesis
 
-## Hypothèse de travail
+An important issue in Monte Carlo simulations is the generation of random numbers. 
+In particular, since we rely on the Black-Scholes model, we need to simulate a random variable that follows a normal distribution to calculate the payoffs and derive an estimate of the option price. The choice of our pseudo-random generator is therefore crucial. We have used the pseudo-random generator of the C++11 library which is more robust than the function *rand()*.
 
-Une des problématiques importantes des simulations de Monte-Carlo réside dans la génération des nombres aléatoires.
-En particulier, puisque nous nous basons sur le modèle de Black-Scholes, nous devons simuler une loi normale pour
-calculer les payoffs et en déduire une estimation du prix des options. Le choix de notre générateur pseudo-aléatoire
-est donc crucial. Nous avons utilisé le générateur pseudo-aléatoires de la librairie C++11 qui est plus robuste que la
-fonction *rand()*.
+Thus, from this generator which simulates a random variable of uniform distribution on [-1,1], we use the method of inversion of the distribution function. The polar method (Box Müller) is implemented in the *gaussian_box_muller* method of the *BlackScholesModel* class.
 
-Ainsi, à partir de ce générateur qui simule une variable aléatoire de loi uniforme sur [-1,1], nous utilisons la méthode
-d'inversion de la fonction de répartition. La méthode polaire (Box Müller) est implémentée dans la méthode 
-*gaussian_box_muller*de la classe *BlackScholesModel*.
+# II - Results
 
-# II - Résultats
+The results concerning the prices of the different call options are logical: the options offering the most advantages or simply being the least risky cost more. Moreover, we obtain price values that are comparable to the results of scientific journal articles that deal with the application of the Monte-Carlo method in finance.
 
-Les résultats concernant les prix des différentes options d’achat sont logiques : les options offrant le plus d’avantages
-ou tout simplement étant les moins risquées coûtent plus cher. De plus, nous obtenons des valeurs de prix comparables 
-au résultats d'articles de revues scientifiques qui traitent des applications de la méthode de Monte-Carlo en finance.
+# III - Improvements
 
-# III - Améliorations
+## Reduction of the variance
+The Monte-Carlo method requires a large number of simulations to be relevant. Thus, to have estimates with an appropriate accuracy, we can increase the number of simulations, which is at the expense of an increase in computing time. We must therefore find a middle ground.
 
-## Réduction de la variance
-La simulation par la méthode de Monte-Carlo nécessite un grand nombre de simulations pour être pertinente. Ainsi, pour 
-avoir des estimations avec une précision appropriée, nous pouvons augmenter le nombre de simulations, ce qui se fait 
-au détriment d'une augmentation du temps de calcul. Il faut donc trouver un juste-milieu.
+In some cases, our estimator gives very satisfactory results for execution times of the order of a second, especially for options independent of the path followed by the underlying (use the *priceAndPrintClasssic* method with N = 10 ^ 7). However, when dealing with path-dependent options, it is sometimes not possible to obtain a sufficiently narrow confidence interval in a reasonable time.
 
-Dans certains cas, notre estimateur donne des résultats très satisfaisants pour des temps d'exécution de l'ordre de la 
-seconde, notamment pour les options indépendantes du chemin suivi par le sous-jacent (utilisez la méthode 
-*priceAndPrintClasssic* avec N = 10 ^ 7). Cependant, lorsqu'on traite les options dépendantes du chemin suivi, il n'est 
-parfois pas possible d'obtenir un intervalle de confiance suffisamment étroit en un temps raisonnable.
+To improve the speed of convergence of our estimator we could have used another method: variance reduction. Indeed, reducing the variance of our estimator improves the speed of convergence. 
+However, we have to be careful that the additional computations generated by this method do not increase the computation time too much. We thought of implementing the antithetical control method.
 
-Pour améliorer la rapidité de la convergence de notre estimateur nous aurions pu utiliser une autre méthode : la 
-réduction de variance. En effet, réduire la variance de notre estimateur améliore la vitesse de convergence. 
-Cependant, il faut toutefois veiller à ce que les calculs supplémentaires engendrés par cette méthode n'augmentent 
-pas trop le temps de calcul. Nous avons pensé à implémenter la méthode de contrôle antithétique.
+## Calculating Greeks
 
-## Calculer les Greeks
+We have considered the calculation of Greeks. Unfortunately, we did not complete this part because this addition did not fit well with the structure of the program we had coded until then. Nevertheless, this feature would be desirable in a future program.
 
-Nous avons envisagé le calcul des Greeks. Malheureusmeent, nous n'avons pas mené cette partie à son terme car cet ajout
-s'intégrait mal à la structure du programme que nous avions jusqu'alors codé. Néamoins, cette fonctionnalité
-serait souhaitable dans un futur programme.
+## Graphical interface 
 
-## Interface graphique 
-
-Nous aurions souhaité coder une interface graphique permettant de faciliter l'utilisation de notre pricer d'options par 
-les utilisateurs. Malheureusement, nous avons manqué de temps, et nous nous sommes aperçus que la bibliothèque que nous 
-comptions utiliser est devenue payante.
+We would have liked to code a graphical interface that would have made it easier for users to use our options pricer. Unfortunately, we ran out of time, and we realized that the library we were going to use has become a paid library.
