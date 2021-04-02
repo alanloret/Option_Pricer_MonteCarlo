@@ -21,7 +21,7 @@ We use this model to simulate the evolution of the price of a fictitious underly
 
 ## Structure
 
-The program is composed of 19 files. 
+The program is composed of 21 files. 
 We distinguish the files coding the simulation methods from the files coding the options.
 
 Thus, 7 files are intended for the mechanics of simulation and price calculation:
