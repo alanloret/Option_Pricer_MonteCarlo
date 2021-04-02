@@ -52,7 +52,7 @@ The user must specify several values to make the program work:
 - *steps* (optional), number of steps for the generation of the price path.
 3.  Creation of an option
 - *K*, the strike(s) of the option.
-- T*, the maturity.
+- *T*, the maturity.
 
 **Caution**: Two methods are available to calculate the price of an option: *priceAndPrint* and *priceAndPrintClassic*. 
 The first one accepts all options, and generates a complete price trajectory at each iteration of the Monte-Carlo algorithm. This allows options to be evaluated according to the price trajectory. For options that do not depend on the price path, we can save time by computing only the price at maturity without generating the price path using the *priceAndPrintClassic* method. Therefore, we cannot use this method to estimate the price of an Asian option that depends on the price path nor for options created from the *Complex* class.
